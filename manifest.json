@@ -1,1 +1,8 @@
-{"name":"My Market CRM V3 Cloud","short_name":"Market CRM","start_url":"./index.html","display":"standalone","background_color":"#f3f6fa","theme_color":"#123b63","icons":[]}
+{
+  "name":"My Market CRM V3 Easy Setup",
+  "short_name":"Market CRM",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#f3f6fa",
+  "theme_color":"#123b63"
+}

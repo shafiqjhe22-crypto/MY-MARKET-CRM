@@ -1,37 +1,77 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // IMPORTANT: replace YOUR_ADMIN_EMAIL@example.com with the exact Admin login email.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email in ['shafiq.jhe22@gmail.com'];
+    }
+
     function signedIn() { return request.auth != null; }
-    function isAdmin() { return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)); }
+
     function isApproved() {
-      return signedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid))
-        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'approved';
+      return signedIn() && (
+        isAdmin() ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid))
+          && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'approved')
+      );
     }
-    match /admins/{uid} {
-      allow read: if signedIn() && request.auth.uid == uid;
-      allow write: if false; // Create the first admin document manually in Firebase Console.
-    }
+
     match /users/{uid} {
-      allow create: if signedIn() && request.auth.uid == uid
-        && request.resource.data.uid == uid
-        && request.resource.data.role == 'officer'
-        && request.resource.data.status == 'pending'
-        && request.resource.data.keys().hasOnly(['uid','name','employeeId','designation','branch','mobile','email','role','status','createdAt','passwordChangedAt']);
+      // An officer can create only their own pending profile.
+      // The allowlisted Admin email can create its own Admin profile on first login.
+      allow create: if signedIn() && request.auth.uid == uid && (
+        (isAdmin()
+          && request.resource.data.email == request.auth.token.email
+          && request.resource.data.role == 'admin'
+          && request.resource.data.status == 'approved')
+        ||
+        (request.resource.data.uid == uid
+          && request.resource.data.role == 'officer'
+          && request.resource.data.status == 'pending'
+          && request.resource.data.keys().hasOnly([
+            'uid','name','employeeId','designation','branch','mobile','email',
+            'role','status','createdAt','passwordChangedAt'
+          ]))
+      );
       allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
-      allow update: if isAdmin();
-      allow delete: if isAdmin();
+      allow update, delete: if isAdmin();
     }
-    match /{collectionName}/{recordId} {
-      allow read: if collectionName in ['customers','surveys','visits'] && isApproved()
-        && (isAdmin() || resource.data.ownerId == request.auth.uid);
-      allow create: if collectionName in ['customers','surveys','visits'] && isApproved()
+
+    match /customers/{recordId} {
+      allow read: if isApproved() && (isAdmin() || resource.data.ownerId == request.auth.uid);
+      allow create: if isApproved()
         && request.resource.data.ownerId == request.auth.uid
         && request.resource.data.officerName is string;
-      allow update: if collectionName in ['customers','surveys','visits'] && isApproved()
-        && (isAdmin() || resource.data.ownerId == request.auth.uid)
-        && (isAdmin() || (request.resource.data.ownerId == request.auth.uid && request.resource.data.ownerId == resource.data.ownerId));
-      allow delete: if collectionName in ['customers','surveys','visits'] && isApproved()
-        && (isAdmin() || resource.data.ownerId == request.auth.uid);
+      allow update: if isApproved()
+        && (isAdmin() || (resource.data.ownerId == request.auth.uid
+          && request.resource.data.ownerId == resource.data.ownerId));
+      allow delete: if isApproved() && (isAdmin() || resource.data.ownerId == request.auth.uid);
     }
+
+    match /surveys/{recordId} {
+      allow read: if isApproved() && (isAdmin() || resource.data.ownerId == request.auth.uid);
+      allow create: if isApproved()
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.officerName is string;
+      allow update: if isApproved()
+        && (isAdmin() || (resource.data.ownerId == request.auth.uid
+          && request.resource.data.ownerId == resource.data.ownerId));
+      allow delete: if isApproved() && (isAdmin() || resource.data.ownerId == request.auth.uid);
+    }
+
+    match /visits/{recordId} {
+      allow read: if isApproved() && (isAdmin() || resource.data.ownerId == request.auth.uid);
+      allow create: if isApproved()
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.officerName is string;
+      allow update: if isApproved()
+        && (isAdmin() || (resource.data.ownerId == request.auth.uid
+          && request.resource.data.ownerId == resource.data.ownerId));
+      allow delete: if isApproved() && (isAdmin() || resource.data.ownerId == request.auth.uid);
+    }
+
+    // All other collections remain blocked by default.
   }
 }
