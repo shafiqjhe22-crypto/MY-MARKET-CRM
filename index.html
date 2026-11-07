@@ -25,14 +25,6 @@ import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,sendPa
 import {getFirestore,doc,setDoc,getDoc,collection,addDoc,updateDoc,deleteDoc,getDocs,query,where,serverTimestamp,orderBy} from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js';
 // Firebase Console > Project settings > General > Your apps > SDK setup > Config. Replace these values.
 // Import the functions you need from the SDKs you need
-
-import { initializeApp } from "firebase/app";
-
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {apiKey: "AIzaSyATOuqEInKtuZkE8i2dc1FDFO25I15VLt8",
 authDomain: "my-market-crm.firebaseapp.com",
 databaseURL: "https://my-market-crm-default-rtdb.firebaseio.com",
@@ -42,9 +34,6 @@ messagingSenderId: "1060738872049",
 appId: "1:1060738872049:web:1dba87aff93af48c7f6f50",
 measurementId: "G-9F3D8Q4909"
 };
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app); 
 const configured=!Object.values(firebaseConfig).some(v=>String(v).startsWith('PASTE_')||String(v).includes('my-market-crm'));
 let app,auth,db,currentUser=null,profile=null,isAdmin=false,records={customers:[],surveys:[],visits:[]},officers=[];
 const $=id=>document.getElementById(id), today=()=>new Date().toISOString().slice(0,10), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
