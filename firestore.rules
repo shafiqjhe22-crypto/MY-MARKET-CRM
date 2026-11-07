@@ -23,7 +23,7 @@ service cloud.firestore {
       // The allowlisted Admin email can create its own Admin profile on first login.
       allow create: if signedIn() && request.auth.uid == uid && (
         (isAdmin()
-          && request.resource.data.email == request.auth.token.email
+          && request.resource.data.email == request.auth.token.email in ['shafiq.jhe22@gmail.com']
           && request.resource.data.role == 'admin'
           && request.resource.data.status == 'approved')
         ||
