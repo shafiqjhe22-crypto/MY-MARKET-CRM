@@ -24,17 +24,10 @@ import {initializeApp} from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-
 import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,sendPasswordResetEmail,updatePassword,onAuthStateChanged,signOut} from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js';
 import {getFirestore,doc,setDoc,getDoc,collection,addDoc,updateDoc,deleteDoc,getDocs,query,where,serverTimestamp,orderBy} from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js';
 // Firebase Console > Project settings > General > Your apps > SDK setup > Config. Replace these values.
-const firebaseConfig={apiKey:"AIzaSyATOuqEInKtuZkE8i2dc1FDFO25I15VLt8",
- authDomain: "my-market-crm.firebaseapp.com",
-databaseURL: "https://my-market-crm-default-rtdb.firebaseio.com",
- projectId: "my-market-crm",
- storageBucket:"my-market-crm.firebasestorage.app,
- messagingSenderId: "1060738872049",
-appId:"1:1060738872049:web:1dba87aff93af48c7f6f50",measurementId: "G-9F3D8Q4909"
-};
+const firebaseConfig={apiKey:'PASTE_API_KEY',authDomain:'YOUR_PROJECT_ID.firebaseapp.com',projectId:'YOUR_PROJECT_ID',storageBucket:'YOUR_PROJECT_ID.firebasestorage.app',messagingSenderId:'PASTE_SENDER_ID',appId:'PASTE_APP_ID'};
 // Setup: এখানে Admin-এর সঠিক Email লিখুন; একই Email firestore.rules-এর ADMIN_EMAILS-এও বসাতে হবে।
 const ADMIN_EMAILS=['shafiq.jhe22@gmail.com'].map(x=>x.toLowerCase());
-const configured=!Object.values(firebaseConfig).some(v=>String(v).startsWith('PASTE_')||String(v).includes('my-market-crm'));
+const configured=!Object.values(firebaseConfig).some(v=>String(v).startsWith('PASTE_')||String(v).includes('YOUR_PROJECT_ID'));
 let app,auth,db,currentUser=null,profile=null,isAdmin=false,records={customers:[],surveys:[],visits:[]},officers=[];
 const $=id=>document.getElementById(id), today=()=>new Date().toISOString().slice(0,10), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function msg(s){$('authMsg').textContent=s}function show(id){['authView','pendingView','suspendedView','appView'].forEach(x=>$(x).classList.toggle('hidden',x!==id))}function money(n){return '৳'+Number(n||0).toLocaleString('en-US')}
