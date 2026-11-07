@@ -24,25 +24,16 @@ import {initializeApp} from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-
 import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,sendPasswordResetEmail,updatePassword,onAuthStateChanged,signOut} from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js';
 import {getFirestore,doc,setDoc,getDoc,collection,addDoc,updateDoc,deleteDoc,getDocs,query,where,serverTimestamp,orderBy} from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js';
 // Firebase Console > Project settings > General > Your apps > SDK setup > Config. Replace these values.
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyATOuqEInKtuZkE8i2dc1FDFO25I15VLt8",
-  authDomain: "my-market-crm.firebaseapp.com",
-  databaseURL: "https://my-market-crm-default-rtdb.firebaseio.com",
-  projectId: "my-market-crm",
-  storageBucket: "my-market-crm.firebasestorage.app",
-  messagingSenderId: "1060738872049",
-  appId: "1:1060738872049:web:1dba87aff93af48c7f6f50",
-  measurementId: "G-9F3D8Q4909"
+const firebaseConfig = {apiKey: "AIzaSyATOuqEInKtuZkE8i2dc1FDFO25I15VLt8",
+ authDomain: "my-market-crm.firebaseapp.com",
+databaseURL: "https://my-market-crm-default-rtdb.firebaseio.com",
+ projectId: "my-market-crm",
+storageBucket: "my-market-crm.firebasestorage.app",
+messagingSenderId: "1060738872049",
+appId: "1:1060738872049:web:1dba87aff93af48c7f6f50",
+ measurementId: "G-9F3D8Q4909"
 };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-// Setup: এখানে Admin-এর সঠিক Email লিখুন; একই Email firestore.rules-এর ADMIN_EMAILS-এও বসাতে হবে।
-const ADMIN_EMAILS=['shafiq.jhe22@gmail.com'].map(x=>x.toLowerCase());
-const configured=!Object.values(firebaseConfig).some(v=>String(v).startsWith('PASTE_')||String(v).includes('YOUR_PROJECT_ID'));
+const configured=!Object.values(firebaseConfig).some(v=>String(v).startsWith('PASTE_')||String(v).includes('my-market-crm'));
 let app,auth,db,currentUser=null,profile=null,isAdmin=false,records={customers:[],surveys:[],visits:[]},officers=[];
 const $=id=>document.getElementById(id), today=()=>new Date().toISOString().slice(0,10), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function msg(s){$('authMsg').textContent=s}function show(id){['authView','pendingView','suspendedView','appView'].forEach(x=>$(x).classList.toggle('hidden',x!==id))}function money(n){return '৳'+Number(n||0).toLocaleString('en-US')}
@@ -52,7 +43,7 @@ $('registerForm').onsubmit=async e=>{e.preventDefault();if(!configured)return al
 $('loginBtn').onclick=async()=>{if(!configured)return msg('Firebase config বসান এবং Firestore/Auth চালু করুন।');try{await signInWithEmailAndPassword(auth,$('loginEmail').value.trim(),$('loginPassword').value)}catch(e){msg(errorText(e))}};
 $('forgotBtn').onclick=async()=>{if(!configured)return;let email=$('loginEmail').value.trim();if(!email)return msg('প্রথমে Email লিখুন।');try{await sendPasswordResetEmail(auth,email);msg('Password reset link ইমেইলে পাঠানো হয়েছে।')}catch(e){msg(errorText(e))}};
 function errorText(e){return ({'auth/email-already-in-use':'এই Email দিয়ে আগে রেজিস্ট্রেশন হয়েছে।','auth/invalid-credential':'Email অথবা Password ভুল।','auth/weak-password':'Password কমপক্ষে ৮ অক্ষরের দিন।','auth/invalid-email':'সঠিক Email দিন।','permission-denied':'Firestore Rules অনুমতি দেয়নি। Rules ঠিকভাবে Publish হয়েছে কি না দেখুন।'})[e.code]||e.message||'একটি সমস্যা হয়েছে।'}
-onAuthStateChanged(auth,async user=>{currentUser=user;if(!user){profile=null;show('authView');$('headerUser').textContent='';return}try{let adminByEmail=ADMIN_EMAILS.includes((user.email||'').toLowerCase());let snap=await getDoc(doc(db,'users',user.uid));if(!snap.exists() && adminByEmail){profile={uid:user.uid,name:user.displayName||'CRM Admin',employeeId:'ADMIN',designation:'Administrator',branch:'Head Office',mobile:'',email:user.email,role:'admin',status:'approved'};await setDoc(doc(db,'users',user.uid),{...profile,createdAt:serverTimestamp(),passwordChangedAt:serverTimestamp()});}else if(!snap.exists()){show('pendingView');return}else{profile=snap.data()}isAdmin=adminByEmail;if(isAdmin){profile.role='admin';profile.status='approved'}if(profile.status==='pending'){show('pendingView');return}if(profile.status!=='approved'&&!isAdmin){show('suspendedView');return}show('appView');$('headerUser').textContent=profile.name+' • '+(isAdmin?'ADMIN':'OFFICER');$('welcome').textContent='স্বাগতম, '+profile.name;$('roleInfo').textContent=(isAdmin?'ADMIN • সকল অফিসারের ডেটা':'OFFICER • শুধু নিজের ডেটা')+' | '+(profile.branch||'');$('adminTab').classList.toggle('hidden',!isAdmin);await refreshAll()}catch(e){show('pendingView');console.error(e)}});
+onAuthStateChanged(auth,async user=>{currentUser=user;if(!user){profile=null;show('authView');$('headerUser').textContent='';return}try{let snap=await getDoc(doc(db,'users',user.uid));if(!snap.exists()){show('pendingView');return}profile=snap.data();let adminSnap=await getDoc(doc(db,'admins',user.uid));isAdmin=adminSnap.exists();if(isAdmin){profile.role='admin';profile.status='approved'}if(profile.status==='pending'){show('pendingView');return}if(profile.status!=='approved'&&!isAdmin){show('suspendedView');return}show('appView');$('headerUser').textContent=profile.name+' • '+(isAdmin?'ADMIN':'OFFICER');$('welcome').textContent='স্বাগতম, '+profile.name;$('roleInfo').textContent=(isAdmin?'ADMIN • সকল অফিসারের ডেটা':'OFFICER • শুধু নিজের ডেটা')+' | '+(profile.branch||'');$('adminTab').classList.toggle('hidden',!isAdmin);await refreshAll()}catch(e){show('pendingView');console.error(e)}});
 async function getRecords(col){let ref=collection(db,col),q=isAdmin?ref:query(ref,where('ownerId','==',currentUser.uid));let snap=await getDocs(q);return snap.docs.map(d=>({id:d.id,...d.data()}))}
 async function refreshAll(){records.customers=await getRecords('customers');records.surveys=await getRecords('surveys');records.visits=await getRecords('visits');render()}
 function render(){ $('mCustomers').textContent=records.customers.length;$('mSurveys').textContent=records.surveys.length;$('mVisits').textContent=records.visits.length;$('mLoan').textContent=money(records.surveys.reduce((a,x)=>a+Number(x.loan||0),0));$('performance').innerHTML=`<div class="row"><span>Customers: ${records.customers.length}</span><span>Surveys: ${records.surveys.length}</span></div><div class="bar"><span style="width:${Math.min(100,records.surveys.length/Math.max(1,records.customers.length)*100)}%"></span></div><div class="muted">Loan potential: ${money(records.surveys.reduce((a,x)=>a+Number(x.loan||0),0))}</div>`;$('recent').innerHTML=[...records.surveys].sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))).slice(0,6).map(x=>`<div class="listitem"><b>${esc(x.business)}</b><div class="muted">${esc(x.date)} • ${esc(x.officerName)} • ${money(x.loan)}</div></div>`).join('')||'<p class="muted">কোনো Survey নেই।</p>';renderCustomers();renderSurveys();renderVisits();$('reportSummary').innerHTML=`Customers: ${records.customers.length} | Surveys: ${records.surveys.length} | Visits: ${records.visits.length}`;if(isAdmin)loadAdmin()}
