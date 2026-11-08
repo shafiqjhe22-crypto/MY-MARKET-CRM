@@ -10,6 +10,42 @@
 .metric.clickable{cursor:pointer}.metric.clickable:hover{text-decoration:underline}
 @media(max-width:900px), (hover:none) and (pointer:coarse){#homeBtn{display:none!important}body{padding-bottom:76px}#tabs{position:fixed;left:0;right:0;bottom:0;margin:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 18px #102a4415;padding:7px 4px calc(7px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,1fr);gap:2px;justify-content:space-around;overflow:visible}#tabs button{border-radius:10px;background:transparent;padding:5px 2px;color:var(--muted);font-size:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}#tabs button.active{background:#eaf3fc;color:var(--navy)}.wrap{padding:10px}.detailgrid{grid-template-columns:1fr}}
 @media(min-width:650px){#tabs{position:fixed;left:0;top:76px;bottom:0;width:215px;background:#fff;border-right:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column;align-items:stretch;gap:8px;overflow:auto;margin:0;border-radius:0}#tabs button{display:flex;align-items:center;gap:12px;text-align:left;border-radius:9px;padding:13px;background:#f2f6fa;color:var(--navy)}#tabs button.active{background:var(--navy);color:#fff}#appView{margin-left:215px}.wrap{max-width:none;padding:20px 26px}.head{max-width:none;margin-left:215px;padding-left:18px}.detailgrid{grid-template-columns:1fr 1fr}}
+@media(min-width:650px){
+  /* V4.3: compact, readable and colorful desktop/tablet sidebar */
+  #tabs{
+    width:190px!important;
+    padding:14px 10px!important;
+    gap:10px!important;
+    justify-content:flex-start!important;
+    align-content:flex-start!important;
+  }
+  #tabs button{
+    flex:0 0 auto!important;
+    min-height:58px;
+    height:auto;
+    padding:10px 13px!important;
+    gap:13px!important;
+    border:1px solid transparent;
+    border-radius:12px!important;
+    font-size:15px!important;
+    font-weight:700;
+    justify-content:flex-start;
+    box-shadow:0 2px 7px #102a440d;
+    transition:transform .16s ease,box-shadow .16s ease,background .16s ease;
+  }
+  #tabs button .navicon{font-size:23px!important;line-height:1.1;margin:0!important;min-width:25px;text-align:center}
+  #tabs button .navlabel{font-size:15px!important;line-height:1.25;font-weight:700}
+  #tabs button:nth-child(1){background:#e8f2ff;color:#155b9a;border-color:#d5e7fb}
+  #tabs button:nth-child(2){background:#e8f8f1;color:#16734c;border-color:#d2efdf}
+  #tabs button:nth-child(3){background:#fff3e5;color:#a85a0a;border-color:#f8e3c9}
+  #tabs button:nth-child(4){background:#f1edff;color:#6546a8;border-color:#e2dafb}
+  #tabs button:nth-child(5){background:#ffeef4;color:#a33d68;border-color:#f8dce7}
+  #tabs button:nth-child(6){background:#e8f7fa;color:#176b7b;border-color:#d2edf1}
+  #tabs button:hover{transform:translateY(-1px);box-shadow:0 5px 12px #102a4418}
+  #tabs button.active{background:linear-gradient(120deg,#123b63,#1769aa)!important;color:#fff!important;border-color:#1769aa!important;box-shadow:0 4px 12px #1769aa35}
+  #appView{margin-left:190px!important}
+  .head{margin-left:190px!important}
+}
 @media print{#surveyViewModal{position:static;background:white;padding:0}.modalbox{max-width:none;margin:0;box-shadow:none}}
 </style></head><body>
 <header><div class="head"><div><h1>My Market CRM — Customer Survey</h1><p>Cloud-based • Multi-officer • Bangla / English data</p></div><div id="headerUser" class="muted" style="color:white;text-align:right"></div></div></header>
