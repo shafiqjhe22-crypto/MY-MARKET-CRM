@@ -19,8 +19,8 @@
 <section id="pendingView" class="hidden"><div class="panel"><h2>Approval Pending</h2><p>আপনার রেজিস্ট্রেশন জমা হয়েছে। Admin Employee ID ও Branch যাচাই করে অনুমোদন দিলে আপনি CRM ব্যবহার করতে পারবেন।</p><button class="secondary" id="pendingRefresh">Refresh Status</button><button class="danger" id="pendingLogout">Logout</button></div></section>
 <section id="suspendedView" class="hidden"><div class="panel"><h2>Account Suspended</h2><p>আপনার অ্যাকাউন্ট বর্তমানে নিষ্ক্রিয়। Admin-এর সঙ্গে যোগাযোগ করুন।</p><button class="danger" id="suspendedLogout">Logout</button></div></section>
 <section id="appView" class="hidden">
-<div class="panel topline"><div><div class="actions no-print"><button class="secondary" id="backBtn">← Back</button><button class="secondary" id="homeBtn">⌂ Home</button></div><strong id="welcome"></strong><div class="muted" id="roleInfo"></div></div><div class="actions no-print"><button class="secondary" id="changePass">Change Password</button><button class="danger" id="logoutBtn">Logout</button></div></div>
-<nav class="tabs no-print" id="tabs"><button class="active" data-tab="dashboard"><span class="navicon">⌂</span><span class="navlabel">Home</span></button><button data-tab="customers"><span class="navicon">▤</span><span class="navlabel">Survey</span></button><button data-tab="reports"><span class="navicon">▥</span><span class="navlabel">Reports</span></button><button data-tab="visits"><span class="navicon">▦</span><span class="navlabel">Visits</span></button><button data-tab="profile"><span class="navicon">◉</span><span class="navlabel">Profile</span></button><button data-tab="admin" id="adminTab" class="hidden"><span class="navicon">⚙</span><span class="navlabel">Admin</span></button></nav>
+<div class="panel topline"><div><div class="actions no-print"><button type="button" class="secondary" id="backBtn">← Back</button><button type="button" class="secondary" id="homeBtn">⌂ Home</button></div><strong id="welcome"></strong><div class="muted" id="roleInfo"></div></div><div class="actions no-print"><button class="secondary" id="changePass">Change Password</button><button class="danger" id="logoutBtn">Logout</button></div></div>
+<nav class="tabs no-print" id="tabs"><button type="button" class="active" data-tab="dashboard"><span class="navicon">⌂</span><span class="navlabel">Home</span></button><button type="button" data-tab="customers"><span class="navicon">▤</span><span class="navlabel">Survey</span></button><button type="button" data-tab="reports"><span class="navicon">▥</span><span class="navlabel">Reports</span></button><button type="button" data-tab="visits"><span class="navicon">▦</span><span class="navlabel">Visits</span></button><button type="button" data-tab="profile"><span class="navicon">◉</span><span class="navlabel">Profile</span></button><button type="button" data-tab="admin" id="adminTab" class="hidden"><span class="navicon">⚙</span><span class="navlabel">Admin</span></button></nav>
 <section id="dashboard"><div class="cards"><div class="card"><div class="metric clickable" id="mCustomers" title="সব সার্ভে রেকর্ড দেখুন">0</div><div class="label">Customer Surveys</div></div><div class="card"><div class="metric" id="mSurveys">0</div><div class="label">Legacy Survey Records</div></div><div class="card"><div class="metric" id="mVisits">0</div><div class="label">Visit Records</div></div><div class="card"><div class="metric" id="mLoan">৳0</div><div class="label">Total Loan Potential</div></div></div><div class="panel"><h2>Performance Overview</h2><div id="performance"></div></div><div class="panel"><h2>Recent Activity</h2><div id="recent"></div></div></section>
 <section id="customers" class="hidden"><div class="panel"><h2 id="customerTitle">নতুন Customer Survey</h2><div class="notice">এটি সম্ভাব্য ব্যবসায়ী/Prospective Customer-এর মার্কেট সার্ভে ফর্ম। ব্যাংকের বিদ্যমান গ্রাহকের তথ্য এন্ট্রি করার জন্য নয়।</div><form id="customerForm"><input type="hidden" id="cId"><div class="grid">
 <div><label>1. Business Name *</label><input id="cBusiness" required></div>
@@ -51,7 +51,7 @@
 <div class="grid"><div><label>Report Type</label><select id="reportType"><option value="all">All Surveys (Admin)</option><option value="officer">Officer-wise</option><option value="branch">Branch-wise</option><option value="mine">My Surveys</option></select></div><div id="reportOfficerWrap"><label>Officer</label><select id="reportOfficer"><option value="">সব অফিসার</option></select></div><div id="reportBranchWrap"><label>Branch</label><select id="reportBranch"><option value="">সব ব্রাঞ্চ</option></select></div><div><label>Start Date</label><input id="reportStart" type="date"></div><div><label>End Date</label><input id="reportEnd" type="date"></div></div>
 <div class="actions"><button class="primary" id="generateReport">Generate Report</button><button class="secondary" id="downloadReportCsv">Download Excel (CSV)</button><button class="secondary" id="downloadReportPdf">Download PDF / Print</button></div><div id="reportSummary" class="status"></div><div id="reportTable"></div>
 <div class="notice">Excel ফাইল CSV ফরম্যাটে ডাউনলোড হবে, যা Microsoft Excel-এ খোলা যাবে। PDF বাটনে প্রিন্ট ডায়ালগ খুলবে; সেখানে Save as PDF নির্বাচন করুন।</div>
-<div class="actions"><button class="secondary" id="exportSurveys">Export Legacy Surveys CSV</button><button class="secondary" id="exportVisits">Export Visits CSV</button></div></div></section>
+<div class="actions"><button class="secondary" id="exportCustomers">Export Customer Surveys CSV</button><button class="secondary" id="exportSurveys">Export Legacy Surveys CSV</button><button class="secondary" id="exportVisits">Export Visits CSV</button></div></div></section>
 <section id="admin" class="hidden"><div class="panel"><h2>Admin Control Panel</h2><div class="cards"><div class="card"><div class="metric" id="aPending">0</div><div class="label">Pending Officers</div></div><div class="card"><div class="metric" id="aActive">0</div><div class="label">Active Officers</div></div><div class="card"><div class="metric" id="aAll">0</div><div class="label">Total Registered</div></div><div class="card"><div class="metric" id="aBranches">0</div><div class="label">Branches</div></div></div></div><div class="panel"><div class="topline"><h2>Officer Management</h2><button class="secondary" id="exportOfficers">Export Officer CSV</button></div><div id="officerList"></div></div><div class="panel"><h2>Branch-wise Performance</h2><div id="branchPerformance"></div></div><div class="panel"><h2>Officer-wise Survey Performance</h2><div id="officerPerformance"></div></div></section>
 <section id="profile" class="hidden"><div class="panel"><h2>Officer Profile</h2><div class="profilegrid" id="profileDetails"></div><div class="actions"><button class="secondary" id="profileChangePass">Change Password</button><button class="danger" id="profileLogout">Logout</button></div></div></section>
 </section></main>
@@ -135,9 +135,42 @@ function clearCustomerForm(){ $('customerForm').reset();$('cId').value='';$('cDi
 toggleLoanFields();toggleNgoFields();
 
 // Navigation, master data and V4 reporting
-let previousTab='dashboard';function openTab(tab){let active=document.querySelector('[data-tab].active')?.dataset.tab;if(active&&active!==tab)previousTab=active;document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));['dashboard','customers','visits','reports','admin','profile'].forEach(x=>$(x).classList.toggle('hidden',x!==tab));window.scrollTo({top:0,behavior:'smooth'});if(tab==='profile')renderProfile();if(tab==='reports')prepareReportFilters()}
-document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>openTab(b.dataset.tab)));$('homeBtn').onclick=()=>openTab('dashboard');$('backBtn').onclick=()=>openTab(previousTab||'dashboard');
-$('mCustomers').onclick=()=>{openTab('customers');$('cSearch').value='';renderCustomers()};
+// Use one central navigation function so mobile and desktop controls behave identically.
+const APP_TABS=['dashboard','customers','visits','reports','admin','profile'];
+let tabHistory=['dashboard'];
+function openTab(tab, options={}){
+  if(!APP_TABS.includes(tab)) return;
+  const current=APP_TABS.find(x=>!$(x).classList.contains('hidden')) || 'dashboard';
+  if(!options.fromBack && current!==tab){
+    tabHistory.push(current);
+    if(tabHistory.length>30) tabHistory=tabHistory.slice(-30);
+  }
+  APP_TABS.forEach(x=>$(x).classList.toggle('hidden',x!==tab));
+  document.querySelectorAll('#tabs [data-tab]').forEach(b=>{
+    const selected=b.dataset.tab===tab;
+    b.classList.toggle('active',selected);
+    b.setAttribute('aria-current',selected?'page':'false');
+  });
+  window.scrollTo({top:0,behavior:'auto'});
+  if(tab==='profile') renderProfile();
+  if(tab==='reports') prepareReportFilters();
+  if(tab==='customers') renderCustomers();
+  if(tab==='visits') renderVisits();
+}
+// Event delegation prevents navigation from breaking if button markup changes.
+$('tabs').addEventListener('click',event=>{
+  const button=event.target.closest('button[data-tab]');
+  if(!button || button.classList.contains('hidden')) return;
+  event.preventDefault();
+  openTab(button.dataset.tab);
+});
+$('homeBtn').addEventListener('click',event=>{event.preventDefault();tabHistory=[];openTab('dashboard',{fromBack:true})});
+$('backBtn').addEventListener('click',event=>{
+  event.preventDefault();
+  const previous=tabHistory.pop() || 'dashboard';
+  openTab(previous,{fromBack:true});
+});
+$('mCustomers').addEventListener('click',()=>{ $('cSearch').value=''; openTab('customers'); });
 $('cBankLoan').onchange=toggleLoanFields;$('cNgoLoan').onchange=toggleNgoFields;
 $('cDivision').onchange=()=>{populateDistricts();populateUpazilas()};$('cDistrict').onchange=populateUpazilas;
 $('vDate').value=today();$('reportEnd').value=today();$('reportStart').value=new Date(Date.now()-30*86400000).toISOString().slice(0,10);
