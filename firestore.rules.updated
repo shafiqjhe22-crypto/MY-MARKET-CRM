@@ -1,0 +1,138 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Use the exact, lowercase Admin login email.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email != null
+        && request.auth.token.email.lower() == 'shafiq.jhe22@gmail.com';
+    }
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isApproved() {
+      return signedIn() && (
+        isAdmin()
+        || (
+          exists(/databases/$(database)/documents/users/$(request.auth.uid))
+          && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'approved'
+        )
+      );
+    }
+
+    match /users/{uid} {
+      // New officers create only their own pending profile. Optional extended
+      // fields preserve compatibility with older profile documents.
+      allow create: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.uid == uid
+        && request.resource.data.role == 'officer'
+        && request.resource.data.status == 'pending'
+        && request.resource.data.email is string
+        && request.resource.data.employeeId is string
+        && request.resource.data.name is string
+        && request.resource.data.designation is string
+        && request.resource.data.branch is string
+        && request.resource.data.mobile is string
+        && request.resource.data.keys().hasOnly([
+          'uid', 'name', 'employeeId', 'designation', 'branch', 'mobile', 'email',
+          'jobGrade', 'unitName', 'areaName', 'territory', 'region',
+          'role', 'status', 'createdAt', 'passwordChangedAt'
+        ])
+        && (!('jobGrade' in request.resource.data) || request.resource.data.jobGrade is string)
+        && (!('unitName' in request.resource.data) || request.resource.data.unitName is string)
+        && (!('areaName' in request.resource.data) || request.resource.data.areaName is string)
+        && (!('territory' in request.resource.data) || request.resource.data.territory is string)
+        && (!('region' in request.resource.data) || request.resource.data.region is string);
+
+      // Admin may create its own initial Admin profile.
+      allow create: if signedIn()
+        && request.auth.uid == uid
+        && isAdmin()
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.role == 'admin'
+        && request.resource.data.status == 'approved';
+
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+
+      // Officers may only update their own password-change timestamp.
+      // Admin retains officer approval/suspension management.
+      allow update: if isAdmin()
+        || (
+          signedIn()
+          && request.auth.uid == uid
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['passwordChangedAt'])
+          && request.resource.data.passwordChangedAt is timestamp
+        );
+
+      allow delete: if isAdmin();
+    }
+
+    match /customers/{recordId} {
+      allow read: if isApproved()
+        && (isAdmin() || resource.data.ownerId == request.auth.uid);
+      allow create: if isApproved()
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.officerName is string;
+      allow update: if isApproved()
+        && (
+          isAdmin()
+          || (
+            resource.data.ownerId == request.auth.uid
+            && request.resource.data.ownerId == resource.data.ownerId
+          )
+        );
+      allow delete: if isApproved()
+        && (isAdmin() || resource.data.ownerId == request.auth.uid);
+    }
+
+    match /surveys/{recordId} {
+      allow read: if isApproved()
+        && (isAdmin() || resource.data.ownerId == request.auth.uid);
+      allow create: if isApproved()
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.officerName is string;
+      allow update: if isApproved()
+        && (
+          isAdmin()
+          || (
+            resource.data.ownerId == request.auth.uid
+            && request.resource.data.ownerId == resource.data.ownerId
+          )
+        );
+      allow delete: if isApproved()
+        && (isAdmin() || resource.data.ownerId == request.auth.uid);
+    }
+
+    match /visits/{recordId} {
+      allow read: if isApproved()
+        && (isAdmin() || resource.data.ownerId == request.auth.uid);
+      allow create: if isApproved()
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.officerName is string;
+      allow update: if isApproved()
+        && (
+          isAdmin()
+          || (
+            resource.data.ownerId == request.auth.uid
+            && request.resource.data.ownerId == resource.data.ownerId
+          )
+        );
+      allow delete: if isApproved()
+        && (isAdmin() || resource.data.ownerId == request.auth.uid);
+    }
+
+    // Employee Master is readable for registration ID lookup (the original
+    // CRM already exposes this master list in its client-side registration form).
+    // Only the configured Admin can import, add, or update employee records.
+    match /employeeMaster/{employeeId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // All other collections remain blocked by default.
+  }
+}
