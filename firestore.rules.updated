@@ -135,45 +135,57 @@ service cloud.firestore {
     // DAILY TASKS MODULE
     // ==========================================
 
-    match /dailyTasks/{taskId} {
+    
+match /dailyTasks/{taskId} {
 
-      // Admin can read all reports.
-      // Approved officers can read only their own reports.
-      allow read: if isAdmin()
-        || (
-          isApproved()
-          && resource.data.ownerId == request.auth.uid
-        );
+  // Admin can read all documents.
+  // Approved officers can read their own existing documents.
+  // They can also check whether a new document ID exists.
+  allow get: if isAdmin()
+    || (
+      isApproved()
+      && (
+        resource == null
+        || resource.data.ownerId == request.auth.uid
+      )
+    );
 
-      // Admin or approved officer can create reports.
-      allow create: if isAdmin()
-        || (
-          isApproved()
-          && request.resource.data.ownerId == request.auth.uid
-          && request.resource.data.type in [
-            'monthlyProjection',
-            'dailyReport',
-            'dailyProjection'
-          ]
-        );
+  // Officers can list only their own documents.
+  allow list: if isAdmin()
+    || (
+      isApproved()
+      && resource.data.ownerId == request.auth.uid
+    );
 
-      // Admin can update all reports.
-      // Officers can update only their own reports.
-      allow update: if isAdmin()
-        || (
-          isApproved()
-          && resource.data.ownerId == request.auth.uid
-          && request.resource.data.ownerId == request.auth.uid
-          && request.resource.data.type in [
-            'monthlyProjection',
-            'dailyReport',
-            'dailyProjection'
-          ]
-        );
+  // Create reports
+  allow create: if isAdmin()
+    || (
+      isApproved()
+      && request.resource.data.ownerId == request.auth.uid
+      && request.resource.data.type in [
+        'monthlyProjection',
+        'dailyReport',
+        'dailyProjection'
+      ]
+    );
 
-      // Only Admin can delete Daily Tasks reports.
-      allow delete: if isAdmin();
-    }
+  // Update reports
+  allow update: if isAdmin()
+    || (
+      isApproved()
+      && resource.data.ownerId == request.auth.uid
+      && request.resource.data.ownerId == request.auth.uid
+      && request.resource.data.type in [
+        'monthlyProjection',
+        'dailyReport',
+        'dailyProjection'
+      ]
+    );
+
+  // Only Admin can delete
+  allow delete: if isAdmin();
+}
+
 
     // ==========================================
     // EMPLOYEE MASTER
