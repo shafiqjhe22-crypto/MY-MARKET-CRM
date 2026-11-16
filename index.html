@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#123b63"><meta name="description" content="Cloud based multi-officer market CRM"><link rel="manifest" href="manifest.json"><title>My Market CRM V4 — Customer Survey Cloud</title>
+<html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102b4e"><meta name="description" content="Cloud based multi-officer market CRM"><link rel="manifest" href="manifest.json"><title>My Market CRM — Professional Customer Management</title>
 <style>
 :root{--navy:#123b63;--blue:#1769aa;--bg:#f3f6fa;--text:#182433;--muted:#657386;--line:#dce4ed}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,'Noto Sans Bengali',sans-serif;color:var(--text)}header{background:linear-gradient(120deg,#123b63,#1769aa);color:#fff;padding:17px}.head,.wrap{max-width:1100px;margin:auto}.head{display:flex;justify-content:space-between;align-items:center;gap:10px}h1{font-size:20px;margin:0}header p{font-size:12px;margin:4px 0 0;opacity:.9}.wrap{padding:14px}.panel,.card{background:#fff;border-radius:14px;padding:14px;box-shadow:0 2px 10px #102a4410;margin-bottom:13px}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.metric{font-size:25px;font-weight:800;color:var(--blue)}.label,.muted,.hint{font-size:12px;color:var(--muted);line-height:1.5}.tabs{display:flex;gap:7px;overflow:auto;margin:12px 0}.tabs button{white-space:nowrap;border:0;border-radius:20px;padding:10px 14px;background:#e2eaf3;color:var(--navy);font-weight:700}.tabs button.active{background:var(--navy);color:#fff}h2{font-size:17px;margin:4px 0 12px}label{display:block;font-size:13px;font-weight:650;margin:9px 0 4px}input,select,textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;font:inherit;background:white;color:var(--text)}textarea{min-height:65px}.grid{display:grid;grid-template-columns:1fr;gap:0 12px}button{cursor:pointer}.primary,.secondary,.danger{border:0;border-radius:9px;padding:10px 13px;font-weight:700}.primary{background:var(--blue);color:white}.secondary{background:#eaf1f8;color:var(--navy)}.danger{background:#fff0f0;color:#a22}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.hidden{display:none!important}.listitem{border:1px solid #e3e9f0;border-radius:10px;padding:11px;margin:8px 0}.topline{display:flex;justify-content:space-between;align-items:center;gap:8px}.badge{font-size:11px;background:#e8f3ff;color:#135b91;padding:4px 8px;border-radius:12px}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.search{max-width:220px}.notice{padding:10px;border-radius:9px;background:#fff8e6;color:#805600;font-size:12px;margin:10px 0}.ok{background:#eaf8ef;color:#17643a}.bar{height:9px;background:#e8edf3;border-radius:9px;overflow:hidden;margin:5px 0 10px}.bar span{display:block;height:100%;background:#1769aa}.auth{max-width:520px;margin:22px auto}.auth h2{margin-top:0}.status{padding:10px;border-radius:8px;background:#eef4fb;margin:8px 0;font-size:13px}.lead-status-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.lead-card{position:relative;overflow:hidden;border:0;border-radius:14px;padding:14px 13px;min-height:94px;text-align:left;color:#fff;box-shadow:0 5px 14px #102a4418;transition:transform .15s,box-shadow .15s}.lead-card:active{transform:scale(.98)}.lead-card .lead-count{font-size:28px;font-weight:850;line-height:1.1}.lead-card .lead-name{font-size:12px;font-weight:700;margin-top:7px;opacity:.97}.lead-card .lead-mark{position:absolute;right:10px;top:6px;font-size:26px;opacity:.22}.lead-card.all{background:linear-gradient(135deg,#334155,#64748b)}.lead-card.new{background:linear-gradient(135deg,#2563eb,#60a5fa)}.lead-card.interested{background:linear-gradient(135deg,#059669,#34d399)}.lead-card.follow{background:linear-gradient(135deg,#d97706,#fbbf24)}.lead-card.proposal{background:linear-gradient(135deg,#7c3aed,#a78bfa)}.lead-card.completed{background:linear-gradient(135deg,#0f766e,#2dd4bf)}.lead-card.notinterested{background:linear-gradient(135deg,#be123c,#fb7185)}.lead-card.selected{outline:3px solid #172554;outline-offset:2px}.lead-filter-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}.lead-clear-filter{font-size:12px}@media(min-width:650px){.lead-status-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:650px){.cards{grid-template-columns:repeat(4,1fr)}.grid{grid-template-columns:1fr 1fr}.wrap{padding:20px}}@media print{header,.tabs,.no-print,form,button{display:none!important}body{background:white}.panel,.card{box-shadow:none;border:1px solid #ddd}}
@@ -50,6 +50,176 @@
   .head{margin-left:190px!important}
 }
 @media print{#surveyViewModal{position:static;background:white;padding:0}.modalbox{max-width:none;margin:0;box-shadow:none}}
+
+/* ─────────────────────────────────────────────────────────────
+   MY MARKET CRM — Professional UI refresh (keeps existing app IDs)
+   ───────────────────────────────────────────────────────────── */
+:root{
+ --navy:#102b4e;--blue:#2463eb;--blue-2:#3b82f6;--bg:#f4f7fb;--surface:#fff;
+ --text:#17263c;--muted:#718096;--line:#e4eaf2;--green:#0f9f6e;
+ --shadow:0 8px 28px rgba(22,43,77,.065);--shadow-sm:0 3px 12px rgba(22,43,77,.055);
+ --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,"Noto Sans Bengali","Segoe UI",system-ui,sans-serif;line-height:1.55;padding-top:76px;-webkit-font-smoothing:antialiased}
+header{position:fixed;z-index:80;top:0;left:0;right:0;height:76px;padding:0 26px;background:rgba(255,255,255,.94);color:var(--text);border-bottom:1px solid var(--line);backdrop-filter:blur(16px);box-shadow:0 3px 16px rgba(20,43,76,.035)}
+.head{height:100%;max-width:none;margin:0!important;display:flex;align-items:center;justify-content:space-between;gap:18px}
+header h1{font-size:18px;font-weight:850;letter-spacing:-.45px;color:var(--navy);display:flex;align-items:center;gap:11px}
+header h1:before{content:"M";display:grid;place-items:center;width:38px;height:38px;border-radius:12px;color:#fff;font-size:20px;font-weight:900;background:linear-gradient(145deg,#1d4ed8,#0f2e59);box-shadow:0 5px 12px #1d4ed833}
+header p{font-size:11px;color:#7b8798;letter-spacing:.25px;margin:2px 0 0 49px;opacity:1}
+#headerUser{font-size:12px!important;color:#56657a!important;font-weight:650}
+main.wrap{max-width:none;margin:0;padding:26px 30px 42px}
+#appView{max-width:1600px;margin-left:250px!important;padding:0 8px 20px}
+#tabs{position:fixed!important;z-index:70;left:0;top:76px;bottom:0;width:232px!important;margin:0!important;padding:24px 14px!important;display:flex!important;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:8px!important;overflow-y:auto;background:#102b4e;border:0;border-right:1px solid #183b64;box-shadow:5px 0 22px rgba(15,39,72,.08)}
+#tabs:before{content:"WORKSPACE";display:block;color:#8fa7c4;font-size:10px;font-weight:800;letter-spacing:1.6px;padding:2px 13px 11px}
+#tabs button{width:100%;min-height:48px;height:auto;flex:0 0 auto;display:flex;align-items:center;justify-content:flex-start;gap:13px;padding:11px 14px!important;border:1px solid transparent;border-radius:12px!important;background:transparent!important;color:#c6d4e6!important;font-size:13px!important;font-weight:650;box-shadow:none!important;transition:background .18s ease,color .18s ease,transform .18s ease}
+#tabs button .navicon{width:24px;min-width:24px;margin:0!important;text-align:center;font-size:19px!important;line-height:1}
+#tabs button .navlabel{font-size:13px!important;font-weight:650;line-height:1.25}
+#tabs button:hover{background:#1b416c!important;color:#fff!important;transform:translateX(2px)}
+#tabs button.active{background:linear-gradient(110deg,#2563eb,#3979ee)!important;color:#fff!important;border-color:#5c91f5!important;box-shadow:0 7px 18px #2563eb42!important}
+#tabs button[data-tab="settings"]{margin-top:auto}
+#appView>.panel.topline{margin:0 0 22px;padding:18px 22px;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);background:linear-gradient(110deg,#fff,#f8fbff)}
+#appView>.panel.topline #welcome{font-size:17px;font-weight:800;color:var(--navy)}
+#appView>.panel.topline .muted{font-size:12px;margin-top:3px}
+#backBtn,#homeBtn{padding:8px 12px}
+.panel,.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:21px;margin-bottom:17px;box-shadow:var(--shadow-sm)}
+.card{transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+h2{font-size:17px;font-weight:800;letter-spacing:-.25px;color:#172f50;margin:2px 0 14px}
+h3{font-size:14px;font-weight:750;color:#29415f}
+.muted,.label,.hint{color:var(--muted);font-size:12px;line-height:1.6}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:16px 0 19px}
+.cards>.card{position:relative;overflow:hidden;min-height:124px;padding:20px 19px;margin:0;border-radius:17px}
+.cards>.card:after{content:"";position:absolute;right:-27px;top:-32px;width:100px;height:100px;border-radius:50%;background:rgba(59,130,246,.055)}
+.metric{font-size:31px;font-weight:850;line-height:1.15;letter-spacing:-1px;color:#1d5bd4;margin-bottom:8px;font-variant-numeric:tabular-nums}
+.cards>.card .label{font-size:12px;font-weight:650;color:#718096}
+.lead-status-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.lead-card{border-radius:15px;min-height:105px;padding:17px;box-shadow:none;transition:transform .18s ease,filter .18s ease}
+.lead-card:hover{transform:translateY(-3px);filter:saturate(1.08)}
+.lead-card .lead-count{font-size:29px;font-weight:850}
+.lead-card .lead-name{font-size:12px;letter-spacing:.1px}
+label{display:block;color:#42536a;font-size:12px;font-weight:750;margin:13px 0 6px}
+input:not([type=checkbox]):not([type=radio]),select,textarea{width:100%;min-height:43px;padding:10px 12px;border:1px solid #dbe3ed;border-radius:10px;background:#fff;color:#1d2d43;font:inherit;font-size:13px;outline:none;transition:border .16s ease,box-shadow .16s ease}
+input:focus,select:focus,textarea:focus{border-color:#6c9df5!important;box-shadow:0 0 0 3px rgba(59,130,246,.12)!important}
+input::placeholder,textarea::placeholder{color:#a2adbb}
+textarea{min-height:92px;resize:vertical}
+input[type=checkbox],input[type=radio]{accent-color:#2563eb}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px}
+.row{gap:12px}
+button{font-family:inherit;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+button:active{transform:scale(.985)}
+.primary,.secondary,.danger{min-height:39px;padding:9px 15px;border-radius:10px;font-size:12px;font-weight:750;border:1px solid transparent}
+.primary{background:linear-gradient(110deg,#2563eb,#3478ef);color:#fff;box-shadow:0 4px 10px #2563eb24}
+.primary:hover{box-shadow:0 6px 15px #2563eb38;filter:brightness(1.03)}
+.secondary{background:#eff5ff;color:#2458a8;border-color:#dce9ff}
+.secondary:hover{background:#e4efff}
+.danger{background:#fff1f2;color:#be3548;border-color:#ffe0e4}
+.danger:hover{background:#ffe7ea}
+.actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:14px}
+.tabs{gap:8px}
+.badge{display:inline-flex;align-items:center;min-height:23px;padding:4px 9px;border-radius:999px;font-size:10px;font-weight:750;background:#eaf2ff;color:#2459a5}
+.listitem{padding:15px 16px;margin:10px 0;border:1px solid var(--line);border-radius:13px;background:#fff;box-shadow:0 2px 8px rgba(24,48,82,.025)}
+.listitem:hover{border-color:#c8d9f4}
+.topline{gap:12px}
+.notice,.status{padding:12px 14px;border-radius:11px;border:1px solid #f5e4bb;background:#fff9eb;color:#805b14;font-size:12px;line-height:1.55}
+.status{border-color:#dce9fb;background:#f2f7ff;color:#345a8a}
+.ok{border-color:#ccebdc;background:#edfbf3;color:#16734b}
+.bar{height:8px;border-radius:20px;background:#edf1f6;margin:8px 0 13px}
+.bar span{border-radius:20px;background:linear-gradient(90deg,#2563eb,#53a0ff)}
+table{border-collapse:separate!important;border-spacing:0;width:100%;font-size:12px!important}
+thead th{position:sticky;top:0;background:#f4f7fc!important;color:#52647d!important;font-size:10px!important;text-transform:uppercase;letter-spacing:.55px;font-weight:800!important;border-bottom:1px solid #e1e8f1!important;padding:12px 11px!important;white-space:nowrap}
+tbody td{padding:11px!important;border-bottom:1px solid #edf1f6!important;color:#34445a;vertical-align:middle}
+tbody tr:hover td{background:#f8fbff}
+#authView{max-width:480px;margin:36px auto 30px}
+#authView>.panel{padding:29px;border-radius:22px;box-shadow:0 16px 45px rgba(20,48,88,.09)}
+#authView h2{font-size:22px;margin-bottom:20px}
+#authView .actions{display:grid;grid-template-columns:1fr 1fr}
+#authView .actions button{min-height:45px}
+#authView #forgotBtn{width:100%}
+.password-wrap{display:flex;gap:8px;align-items:center}
+.password-wrap input{flex:1;min-width:0}
+.password-wrap button{min-width:46px}
+#pendingView,#suspendedView{max-width:650px;margin:35px auto}
+#profile .profilegrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.profileitem{border:1px solid var(--line);border-radius:13px;background:#f9fbfe;padding:14px}
+#surveyViewModal,#visitViewModal{background:rgba(8,24,46,.68);backdrop-filter:blur(5px);padding:20px}
+.modalbox,.visit-modalbox{border-radius:20px;box-shadow:0 22px 70px rgba(0,0,0,.22);padding:24px}
+.detail{padding:11px 4px;border-bottom:1px solid var(--line)}
+.detail b{font-size:10px;letter-spacing:.35px;text-transform:uppercase;color:#8290a3}
+.hidden{display:none!important}
+@media(min-width:650px){
+ body{padding-bottom:0}
+ main.wrap{padding:25px 30px 45px}
+ #appView{margin-left:250px!important}
+ #tabs{width:232px!important}
+ .head{margin-left:0!important;padding:0!important}
+ .detailgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+ .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .lead-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:649px){
+ body{padding-top:68px;padding-bottom:86px}
+ header{height:68px;padding:0 14px}
+ header h1{font-size:15px;gap:8px}
+ header h1:before{width:34px;height:34px;border-radius:10px;font-size:18px}
+ header p{font-size:9px;margin-left:42px}
+ #headerUser{font-size:10px!important;max-width:118px}
+ main.wrap{padding:13px 12px 24px}
+ #appView{margin:0!important;padding:0 0 12px}
+ #tabs{top:auto!important;left:0;right:0;bottom:0;width:100%!important;height:auto;min-height:70px;padding:7px 4px calc(7px + env(safe-area-inset-bottom))!important;display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px!important;overflow-x:auto;overflow-y:hidden;border:0;border-top:1px solid #e2e9f2;box-shadow:0 -7px 22px rgba(20,43,76,.08);background:rgba(255,255,255,.97);backdrop-filter:blur(15px)}
+ #tabs:before{display:none}
+ #tabs button{min-width:0;min-height:54px;padding:5px 1px!important;gap:3px;display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:9px!important;background:transparent!important;color:#75849a!important;font-size:9px!important;white-space:normal}
+ #tabs button .navicon{font-size:17px!important;width:auto;min-width:0}
+ #tabs button .navlabel{font-size:9px!important;line-height:1.1;text-align:center;white-space:nowrap}
+ #tabs button.active{background:#eaf2ff!important;color:#225bc2!important;box-shadow:none!important;border-color:#dbe8ff}
+ #appView>.panel.topline{padding:14px;margin-bottom:13px}
+ .panel,.card{padding:15px;border-radius:15px;margin-bottom:12px}
+ h2{font-size:15px}
+ .cards{gap:9px;margin:12px 0}
+ .cards>.card{padding:14px;min-height:103px}
+ .metric{font-size:25px}
+ .cards>.card .label{font-size:10px}
+ .lead-status-grid{gap:8px}
+ .lead-card{min-height:88px;padding:12px;border-radius:12px}
+ .lead-card .lead-count{font-size:25px}
+ .lead-card .lead-name{font-size:10px}
+ .grid{grid-template-columns:1fr;gap:1px}
+ .row{grid-template-columns:1fr 1fr}
+ label{font-size:11px;margin-top:11px}
+ input:not([type=checkbox]):not([type=radio]),select,textarea{min-height:42px;font-size:13px}
+ .actions{gap:7px}
+ .actions button{flex:1 1 auto}
+ .primary,.secondary,.danger{padding:9px 11px}
+ #profile .profilegrid{grid-template-columns:1fr}
+ #authView{margin:20px auto}
+ #authView>.panel{padding:21px}
+ #authView .actions{grid-template-columns:1fr 1fr}
+ #surveyViewModal,#visitViewModal{padding:9px}
+ .modalbox,.visit-modalbox{margin:8px auto;padding:15px;border-radius:15px}
+ .detailgrid{grid-template-columns:1fr}
+}
+/* Existing light/dark setting now applies consistently to the refreshed interface. */
+body.dark-mode{--bg:#0c1728;--surface:#142238;--text:#e5edf8;--muted:#9aabc2;--line:#293c56;--shadow:0 8px 28px rgba(0,0,0,.2);--shadow-sm:0 3px 12px rgba(0,0,0,.15);background:var(--bg);color:var(--text)}
+body.dark-mode header{background:rgba(15,29,48,.96);border-color:#263b56;color:#e8f0fa}
+body.dark-mode header h1,body.dark-mode h2,body.dark-mode h3{color:#e6efff}
+body.dark-mode .panel,body.dark-mode .card,body.dark-mode .listitem{background:#142238;border-color:#293c56;color:#e5edf8}
+body.dark-mode #appView>.panel.topline{background:linear-gradient(110deg,#142238,#172b46)}
+body.dark-mode input:not([type=checkbox]):not([type=radio]),body.dark-mode select,body.dark-mode textarea{background:#0e1c30;border-color:#344a67;color:#e5edf8}
+body.dark-mode label,body.dark-mode tbody td{color:#c2d0e2}
+body.dark-mode thead th{background:#1c304b!important;color:#b9c9df!important;border-color:#344a67!important}
+body.dark-mode tbody td{border-color:#293c56!important}
+body.dark-mode tbody tr:hover td{background:#1a2d47}
+body.dark-mode .profileitem{background:#172b46;border-color:#344a67}
+body.dark-mode .notice{background:#332b1a;border-color:#5b4b2b;color:#f4d99b}
+body.dark-mode .status{background:#1a2e49;border-color:#344e70;color:#c7dcfa}
+body.dark-mode .secondary{background:#203958;color:#c9ddff;border-color:#34547d}
+body.dark-mode .danger{background:#472832;color:#ffc1ca;border-color:#693543}
+body.dark-mode #tabs{background:#09182b;border-color:#203650}
+@media(max-width:649px){body.dark-mode #tabs{background:rgba(13,27,45,.97);border-color:#293c56}}
+@media print{body{padding:0;background:#fff}header{position:static;box-shadow:none}#tabs{display:none!important}#appView{margin:0!important}.panel,.card{box-shadow:none;break-inside:avoid}}
 
 </style></head><body>
 <header><div class="head"><div><h1>My Market CRM — Customer Survey</h1><p>Cloud-based • Multi-officer • Bangla / English data</p></div><div id="headerUser" class="muted" style="color:white;text-align:right"></div></div></header>
