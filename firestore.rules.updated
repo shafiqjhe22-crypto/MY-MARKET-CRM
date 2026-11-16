@@ -1,8 +1,9 @@
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Use the exact, lowercase Admin login email.
+    // Admin verification
     function isAdmin() {
       return request.auth != null
         && request.auth.token.email != null
@@ -24,8 +25,6 @@ service cloud.firestore {
     }
 
     match /users/{uid} {
-      // New officers create only their own pending profile. Optional extended
-      // fields preserve compatibility with older profile documents.
       allow create: if signedIn()
         && request.auth.uid == uid
         && request.resource.data.uid == uid
@@ -48,7 +47,7 @@ service cloud.firestore {
         && (!('territory' in request.resource.data) || request.resource.data.territory is string)
         && (!('region' in request.resource.data) || request.resource.data.region is string);
 
-      // Admin may create its own initial Admin profile.
+      // Admin initial profile
       allow create: if signedIn()
         && request.auth.uid == uid
         && isAdmin()
@@ -58,8 +57,6 @@ service cloud.firestore {
 
       allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
 
-      // Officers may only update their own password-change timestamp.
-      // Admin retains officer approval/suspension management.
       allow update: if isAdmin()
         || (
           signedIn()
@@ -74,9 +71,11 @@ service cloud.firestore {
     match /customers/{recordId} {
       allow read: if isApproved()
         && (isAdmin() || resource.data.ownerId == request.auth.uid);
+
       allow create: if isApproved()
         && request.resource.data.ownerId == request.auth.uid
         && request.resource.data.officerName is string;
+
       allow update: if isApproved()
         && (
           isAdmin()
@@ -85,6 +84,7 @@ service cloud.firestore {
             && request.resource.data.ownerId == resource.data.ownerId
           )
         );
+
       allow delete: if isApproved()
         && (isAdmin() || resource.data.ownerId == request.auth.uid);
     }
@@ -92,9 +92,11 @@ service cloud.firestore {
     match /surveys/{recordId} {
       allow read: if isApproved()
         && (isAdmin() || resource.data.ownerId == request.auth.uid);
+
       allow create: if isApproved()
         && request.resource.data.ownerId == request.auth.uid
         && request.resource.data.officerName is string;
+
       allow update: if isApproved()
         && (
           isAdmin()
@@ -103,6 +105,7 @@ service cloud.firestore {
             && request.resource.data.ownerId == resource.data.ownerId
           )
         );
+
       allow delete: if isApproved()
         && (isAdmin() || resource.data.ownerId == request.auth.uid);
     }
@@ -110,9 +113,11 @@ service cloud.firestore {
     match /visits/{recordId} {
       allow read: if isApproved()
         && (isAdmin() || resource.data.ownerId == request.auth.uid);
+
       allow create: if isApproved()
         && request.resource.data.ownerId == request.auth.uid
         && request.resource.data.officerName is string;
+
       allow update: if isApproved()
         && (
           isAdmin()
@@ -121,13 +126,59 @@ service cloud.firestore {
             && request.resource.data.ownerId == resource.data.ownerId
           )
         );
+
       allow delete: if isApproved()
         && (isAdmin() || resource.data.ownerId == request.auth.uid);
     }
 
-    // Employee Master is readable for registration ID lookup (the original
-    // CRM already exposes this master list in its client-side registration form).
-    // Only the configured Admin can import, add, or update employee records.
+    // ==========================================
+    // DAILY TASKS MODULE
+    // ==========================================
+
+    match /dailyTasks/{taskId} {
+
+      // Admin can read all reports.
+      // Approved officers can read only their own reports.
+      allow read: if isAdmin()
+        || (
+          isApproved()
+          && resource.data.ownerId == request.auth.uid
+        );
+
+      // Admin or approved officer can create reports.
+      allow create: if isAdmin()
+        || (
+          isApproved()
+          && request.resource.data.ownerId == request.auth.uid
+          && request.resource.data.type in [
+            'monthlyProjection',
+            'dailyReport',
+            'dailyProjection'
+          ]
+        );
+
+      // Admin can update all reports.
+      // Officers can update only their own reports.
+      allow update: if isAdmin()
+        || (
+          isApproved()
+          && resource.data.ownerId == request.auth.uid
+          && request.resource.data.ownerId == request.auth.uid
+          && request.resource.data.type in [
+            'monthlyProjection',
+            'dailyReport',
+            'dailyProjection'
+          ]
+        );
+
+      // Only Admin can delete Daily Tasks reports.
+      allow delete: if isAdmin();
+    }
+
+    // ==========================================
+    // EMPLOYEE MASTER
+    // ==========================================
+
     match /employeeMaster/{employeeId} {
       allow read: if true;
       allow create, update, delete: if isAdmin();
