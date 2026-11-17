@@ -307,14 +307,14 @@ body.dark-mode #tabs{background:#09182b;border-color:#203650}
     <div class="grid">
      <div><label>Projection Month *</label><input id="mpMonth" type="month" required></div>
      <div><label>Number of New Loan</label><input id="mpNewCount" type="number" required min="0" step="1"></div>
-     <div><label>Amount of New Loan (৳)</label><input id="mpNewAmount" type="number" required min="0" step="any"></div>
+     <div><label>Amount of New Loan (Lac)</label><input id="mpNewAmount" type="number" required min="0" step="any"></div>
      <div><label>Number of Repeat Loan</label><input id="mpRepeatCount" type="number" required min="0" step="1"></div>
-     <div><label>Amount of Repeat Loan (৳)</label><input id="mpRepeatAmount" type="number" required min="0" step="any"></div>
-     <div><label>Total Loan File (1 + 3)</label><input id="mpTotalFiles" type="number" readonly value="0"></div>
-     <div><label>Total Loan Amount (2 + 4) (৳)</label><input id="mpTotalAmount" type="number" readonly value="0"></div>
+     <div><label>Amount of Repeat Loan (Lac)</label><input id="mpRepeatAmount" type="number" required min="0" step="any"></div>
+     <div><label>Total Loan File</label><input id="mpTotalFiles" type="number" readonly value="0"></div>
+     <div><label>Total Loan Amount (Lac)</label><input id="mpTotalAmount" type="number" readonly value="0"></div>
      <div><label>Projected Net Disbursement (Total − 20%) (৳)</label><input id="mpNetDisbursement" type="number" readonly value="0"></div>
-     <div><label>Monthly Collection (৳)</label><input id="mpCollection" type="number" required min="0" step="any"></div>
-     <div><label>Approximately Growth (7 − 8) (৳)</label><input id="mpGrowth" type="number" readonly value="0"></div>
+     <div><label>Monthly Collection (Lac)</label><input id="mpCollection" type="number" required min="0" step="any"></div>
+     <div><label>Approximately Growth (Lac)</label><input id="mpGrowth" type="number" readonly value="0"></div>
      <div><label>No. of 20 Lakh Above File</label><input id="mp20LakhFiles" type="number" required min="0" step="1"></div>
     </div>
     <div class="panel" style="margin-top:14px">
@@ -322,11 +322,11 @@ body.dark-mode #tabs{background:#09182b;border-color:#203650}
      <div id="specialProductRows"></div>
     </div>
     <div class="grid">
-     <div><label>12. Fixed Deposit (FD) — Number</label><input id="mpFdCount" type="number" required min="0" step="1"></div>
-     <div><label>12. Fixed Deposit (FD) — Total Amount (৳)</label><input id="mpFdAmount" type="number" required min="0" step="any"></div>
-     <div><label>13. DPS — Number</label><input id="mpDpsCount" type="number" required min="0" step="1"></div>
-     <div><label>13. DPS — Total Amount (৳)</label><input id="mpDpsAmount" type="number" required min="0" step="any"></div>
-     <div><label>14. PAR Collection — Number of Account</label><input id="mpParCount" type="number" required min="0" step="1"></div>
+     <div><label>12. Fixed Deposit (FD)Number</label><input id="mpFdCount" type="number" required min="0" step="1"></div>
+     <div><label>12. Fixed Deposit (FD) Amount (Lac)</label><input id="mpFdAmount" type="number" required min="0" step="any"></div>
+     <div><label>13. DPS Number</label><input id="mpDpsCount" type="number" required min="0" step="1"></div>
+     <div><label>13. DPS Total Amount (Thousand)</label><input id="mpDpsAmount" type="number" required min="0" step="any"></div>
+     <div><label>14. PAR Collection No.of Account</label><input id="mpParCount" type="number" required min="0" step="1"></div>
      <div><label>14. PAR Collection — Approximate Amount (৳)</label><input id="mpParAmount" type="number" required min="0" step="any"></div>
     </div>
     <label>Remarks (Optional)</label><textarea id="mpRemarks" placeholder="প্রয়োজনীয় মন্তব্য লিখুন"></textarea>
