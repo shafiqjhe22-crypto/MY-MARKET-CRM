@@ -183,7 +183,8 @@ match /dailyTasks/{taskId} {
     );
 
   // Only Admin can delete
-  allow delete: if isAdmin();
+  allow delete: if isAdmin() ||
+  (isApproved() && resource.data.ownerId == request.auth.uid);
 }
 
 
