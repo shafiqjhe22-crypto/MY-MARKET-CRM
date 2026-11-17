@@ -293,9 +293,9 @@ body.dark-mode #tabs{background:#09182b;border-color:#203650}
  <div class="panel">
   <div class="topline" style="flex-wrap:wrap"><div><h2>Daily Tasks</h2><div class="muted">Monthly Projection • Daily Report • Daily Projection</div></div><span class="badge">Officer Workspace</span></div>
   <div class="tabs no-print" id="dailyTaskSubTabs">
-   <button type="button" class="active" data-daily-page="monthly">A) Monthly Projection</button>
-   <button type="button" data-daily-page="report">B) Daily Report</button>
-   <button type="button" data-daily-page="projection">C) Daily Projection</button>
+   <button type="button" class="active" data-daily-page="monthly"> Monthly Projection</button>
+   <button type="button" data-daily-page="report"> Daily Report</button>
+   <button type="button" data-daily-page="projection">Daily Projection</button>
    <button type="button" data-daily-page="taskReports">Reports</button>
   </div>
  </div>
@@ -312,7 +312,7 @@ body.dark-mode #tabs{background:#09182b;border-color:#203650}
      <div><label>Amount of Repeat Loan (Lac)</label><input id="mpRepeatAmount" type="number" required min="0" step="any"></div>
      <div><label>Total Loan File</label><input id="mpTotalFiles" type="number" readonly value="0"></div>
      <div><label>Total Loan Amount (Lac)</label><input id="mpTotalAmount" type="number" readonly value="0"></div>
-     <div><label>Projected Net Disbursement (Total − 20%) (৳)</label><input id="mpNetDisbursement" type="number" readonly value="0"></div>
+     <div><label>Projected Net Disbursement (Lac)</label><input id="mpNetDisbursement" type="number" readonly value="0"></div>
      <div><label>Monthly Collection (Lac)</label><input id="mpCollection" type="number" required min="0" step="any"></div>
      <div><label>Approximately Growth (Lac)</label><input id="mpGrowth" type="number" readonly value="0"></div>
      <div><label>No. of 20 Lakh Above File</label><input id="mp20LakhFiles" type="number" required min="0" step="1"></div>
@@ -342,14 +342,14 @@ body.dark-mode #tabs{background:#09182b;border-color:#203650}
     <div class="grid">
      <div><label>Report Date *</label><input id="drDate" type="date" required></div>
      <div><label>Number of 0 DPD Due Date</label><input id="drDue" type="number" required min="0" step="any"></div>
-     <div><label>Total Collection (৳)</label><input id="drCollection" type="number" required min="0" step="any"></div>
-     <div><label>Total Pending (1 − 2) (৳)</label><input id="drPending" type="number" readonly value="0"></div>
-     <div><label>Loan File Submission — Number of File</label><input id="drSubmitCount" type="number" required min="0" step="1"></div>
-     <div><label>Loan File Submission — Total Amount (৳)</label><input id="drSubmitAmount" type="number" required min="0" step="any"></div>
-     <div><label>Loan File OPS Sending — Number of File</label><input id="drOpsCount" type="number" required min="0" step="1"></div>
-     <div><label>Loan File OPS Sending — Total Amount (৳)</label><input id="drOpsAmount" type="number" required min="0" step="any"></div>
-     <div><label>Loan File Disbursement — Number of File</label><input id="drDisbCount" type="number" required min="0" step="1"></div>
-     <div><label>Loan File Disbursement — Total Amount (৳)</label><input id="drDisbAmount" type="number" required min="0" step="any"></div>
+     <div><label>Total Collection</label><input id="drCollection" type="number" required min="0" step="any"></div>
+     <div><label>Total Pending</label><input id="drPending" type="number" readonly value="0"></div>
+     <div><label>Loan File Submission(No.)</label><input id="drSubmitCount" type="number" required min="0" step="1"></div>
+     <div><label>Loan File Submission(Amt.in Lac)</label><input id="drSubmitAmount" type="number" required min="0" step="any"></div>
+     <div><label>Loan File OPS Sending(No.)</label><input id="drOpsCount" type="number" required min="0" step="1"></div>
+     <div><label>Loan File OPS Sending(Amt.in Lac)</label><input id="drOpsAmount" type="number" required min="0" step="any"></div>
+     <div><label>Loan File Disbursement(No.)</label><input id="drDisbCount" type="number" required min="0" step="1"></div>
+     <div><label>Loan File Disbursement(Amt.in Lac)</label><input id="drDisbAmount" type="number" required min="0" step="any"></div>
      <div><label>FDR — Number of FDR</label><input id="drFdrCount" type="number" required min="0" step="1"></div>
      <div><label>FDR — Total Amount (৳)</label><input id="drFdrAmount" type="number" required min="0" step="any"></div>
      <div><label>DPS — Number of DPS</label><input id="drDpsCount" type="number" required min="0" step="1"></div>
