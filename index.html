@@ -290,6 +290,42 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 #calculator .calc-legend-item b{font-size:12px;white-space:nowrap;color:#25364d}
 #calculator .calc-legend-item small{color:#718096;min-width:42px;text-align:right;font-variant-numeric:tabular-nums}
 
+
+/* V5 — Desktop layout correction: prevent double sidebar offset and use full content width */
+@media (min-width:768px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  main.wrap{margin-left:232px!important;width:calc(100% - 232px)!important;max-width:none!important;padding:24px 28px 42px!important}
+  #appView{width:100%!important;max-width:1600px!important;margin:0 auto!important;padding:0!important}
+  header .head{margin-left:232px!important;padding-left:22px!important;width:calc(100% - 232px)!important}
+  #tabs{width:232px!important;left:0!important}
+  #calculator,#calculator .calc-pane,#calculator .calc-pane>.panel{width:100%!important;max-width:none!important;min-width:0!important}
+  #calculator .calc-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important}
+  #calculator .calc-metrics{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  #calculator .calc-pie-layout{grid-template-columns:minmax(190px,240px) minmax(0,1fr)!important;gap:26px!important;padding:22px!important}
+  #calculator .calc-donut{width:min(100%,230px)!important}
+  #calculator .calc-table-wrap{width:100%;max-width:100%}
+  #calculator .calc-actions{gap:10px!important}
+  #calculator .calc-result{width:100%;min-width:0}
+}
+@media (min-width:768px) and (max-width:1100px){
+  main.wrap{padding:18px 20px 34px!important}
+  #calculator .calc-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #calculator .calc-metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #calculator .calc-pie-layout{grid-template-columns:minmax(160px,205px) minmax(0,1fr)!important;gap:16px!important;padding:16px!important}
+  #calculator .calc-legend-item{grid-template-columns:10px minmax(45px,1fr) auto auto!important;gap:6px!important}
+  #calculator .calc-legend-item b{font-size:11px!important}
+  #calculator .calc-legend-item small{font-size:10px!important;min-width:36px!important}
+}
+@media (max-width:767px){
+  main.wrap{margin:0!important;width:100%!important}
+  #appView{margin:0!important;width:100%!important}
+  header .head{margin:0!important;width:100%!important}
+  #calculator .calc-grid{grid-template-columns:minmax(0,1fr)!important}
+  #calculator .calc-metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #calculator .calc-pie-layout{grid-template-columns:minmax(0,1fr)!important}
+  #calculator .calc-legend-item{grid-template-columns:11px minmax(45px,1fr) auto auto!important}
+}
+
 </style></head><body>
 <header><div class="head"><button type="button" class="secondary hidden" id="backBtn" aria-label="Go back" title="Back">←</button><div class="brand-block"><h1>My Market CRM — Customer Survey</h1><p>Cloud-based • Multi-officer • Bangla / English data</p></div><div id="headerUser" class="muted" style="color:white;text-align:right"></div></div></header>
 <main class="wrap">
