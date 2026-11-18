@@ -234,6 +234,62 @@ body.dark-mode #tabs{background:#09182b;border-color:#203650}
 #specialProductRows .product-row .product-custom{margin-top:5px}
 #taskReportTable{overflow:auto}
 @media(max-width:649px){#dailyTaskSubTabs{display:grid;grid-template-columns:1fr 1fr}#specialProductRows .product-row{grid-template-columns:1fr 95px auto}}
+
+/* MY MARKET CRM — UI refinement 2026.11 */
+:root{--navy:#102b4e;--blue:#2563eb;--surface:#fff;--line:#e4eaf2;--muted:#718096;--shadow-sm:0 3px 12px rgba(22,43,77,.055)}
+button,input,select,textarea{font-family:inherit}
+button{transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #93b4ff;outline-offset:2px}
+.panel,.card{box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+/* Desktop workspace sidebar */
+@media(min-width:768px){
+ body{padding-top:76px!important;padding-bottom:0!important}
+ #tabs{position:fixed!important;z-index:70!important;left:0!important;top:76px!important;bottom:0!important;width:250px!important;margin:0!important;padding:22px 15px!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:9px!important;overflow-y:auto!important;overflow-x:hidden!important;background:linear-gradient(180deg,#0b1f38 0%,#12365e 100%)!important;border:0!important;border-right:1px solid #24496f!important;border-radius:0!important;box-shadow:7px 0 24px rgba(12,34,61,.10)!important}
+ #tabs:before{content:'MY WORKSPACE';display:block;color:#91a9c6;font-size:10px;font-weight:800;letter-spacing:1.7px;padding:2px 13px 12px}
+ #tabs button{width:100%!important;min-width:0!important;min-height:52px!important;height:auto!important;flex:0 0 auto!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:14px!important;padding:12px 14px!important;border:1px solid transparent!important;border-radius:13px!important;background:transparent!important;color:#d2deed!important;text-align:left!important;font-size:14px!important;font-weight:650!important;white-space:normal!important;box-shadow:none!important}
+ #tabs button .navicon{display:grid!important;place-items:center!important;width:28px!important;min-width:28px!important;height:28px!important;margin:0!important;font-size:20px!important;line-height:1!important}
+ #tabs button .navlabel{display:block!important;font-size:13px!important;line-height:1.35!important;font-weight:650!important;white-space:normal!important;overflow-wrap:normal!important}
+ #tabs button:hover{background:#ffffff13!important;color:#fff!important;transform:translateX(3px)!important}
+ #tabs button.active{background:linear-gradient(110deg,#2563eb,#477ef1)!important;color:#fff!important;border-color:#78a1ff!important;box-shadow:0 7px 18px #061a354d!important}
+ #tabs button[data-tab="settings"]{margin-top:auto!important}
+ #appView{margin-left:250px!important}
+ header .head{margin-left:250px!important;padding-left:20px!important}
+ main.wrap{margin-left:250px!important;max-width:none!important;padding:22px 28px!important}
+}
+/* Mobile: a stable two-row navigation dock, no vertical word stacking */
+@media(max-width:767px){
+ body{padding-top:68px!important;padding-bottom:calc(132px + env(safe-area-inset-bottom))!important}
+ header{height:68px!important}
+ #tabs{position:fixed!important;z-index:100!important;left:0!important;right:0!important;top:auto!important;bottom:0!important;width:100%!important;height:calc(126px + env(safe-area-inset-bottom))!important;min-height:126px!important;max-height:none!important;margin:0!important;padding:8px 7px calc(8px + env(safe-area-inset-bottom))!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;grid-auto-flow:row!important;align-content:stretch!important;align-items:stretch!important;justify-items:stretch!important;gap:5px 4px!important;overflow:hidden!important;background:rgba(255,255,255,.97)!important;backdrop-filter:blur(18px)!important;border:0!important;border-top:1px solid #dfe7f1!important;border-radius:17px 17px 0 0!important;box-shadow:0 -8px 28px rgba(20,43,76,.12)!important}
+ #tabs:before{display:none!important;content:none!important}
+ #tabs button{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;width:100%!important;min-width:0!important;min-height:0!important;height:100%!important;padding:4px 2px!important;margin:0!important;border:1px solid transparent!important;border-radius:11px!important;background:transparent!important;color:#69788c!important;text-align:center!important;white-space:normal!important;overflow:hidden!important;box-shadow:none!important}
+ #tabs button .navicon{display:block!important;width:auto!important;min-width:0!important;height:auto!important;margin:0!important;font-size:19px!important;line-height:1.1!important}
+ #tabs button .navlabel{display:block!important;width:100%!important;max-width:100%!important;margin:0!important;font-size:10px!important;line-height:1.15!important;font-weight:700!important;text-align:center!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;overflow-wrap:normal!important;word-break:keep-all!important}
+ #tabs button.active{background:#eaf2ff!important;color:#225bc2!important;border-color:#dbe8ff!important;box-shadow:inset 0 0 0 1px #dbe8ff!important}
+ #tabs button:active{transform:scale(.96)!important}
+ main.wrap{padding:12px 11px 20px!important}
+ #appView{margin:0!important;padding:0!important}
+ #calculator .calc-pie-layout{grid-template-columns:minmax(0,1fr)!important;gap:13px!important;padding:13px!important}
+ #calculator .calc-donut{width:min(58vw,190px)!important}
+}
+@media(max-width:360px){
+ #tabs{padding-left:4px!important;padding-right:4px!important;gap:3px 2px!important}
+ #tabs button .navicon{font-size:17px!important}
+ #tabs button .navlabel{font-size:9px!important}
+}
+/* Investment and loan composition pie chart */
+#calculator .calc-pie-layout{display:grid;grid-template-columns:minmax(150px,210px) minmax(0,1fr);align-items:center;gap:22px;padding:18px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(135deg,#fff,#f6f9fd);margin:12px 0 20px;min-width:0;box-shadow:0 4px 16px rgba(22,43,77,.045)}
+#calculator .calc-donut{width:min(100%,205px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;margin:auto;box-shadow:inset 0 0 0 1px #ffffff80,0 5px 18px rgba(22,43,77,.10)}
+#calculator .calc-donut-hole{width:59%;height:59%;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7px;box-shadow:0 2px 12px #102a4412}
+#calculator .calc-donut-hole b{font-size:clamp(12px,2vw,18px);color:#17263c;overflow-wrap:anywhere;line-height:1.25}
+#calculator .calc-donut-hole span{font-size:11px;color:#718096;margin-top:3px}
+#calculator .calc-legend{display:grid;gap:10px;min-width:0}
+#calculator .calc-legend-item{display:grid;grid-template-columns:11px minmax(55px,1fr) auto auto;align-items:center;gap:8px;font-size:12px;min-width:0;padding:7px 9px;border-radius:9px;background:#fff;border:1px solid #edf1f6}
+#calculator .calc-swatch{width:11px;height:11px;border-radius:4px}
+#calculator .calc-legend-label{overflow-wrap:anywhere;color:#526174}
+#calculator .calc-legend-item b{font-size:12px;white-space:nowrap;color:#25364d}
+#calculator .calc-legend-item small{color:#718096;min-width:42px;text-align:right;font-variant-numeric:tabular-nums}
+
 </style></head><body>
 <header><div class="head"><button type="button" class="secondary hidden" id="backBtn" aria-label="Go back" title="Back">←</button><div class="brand-block"><h1>My Market CRM — Customer Survey</h1><p>Cloud-based • Multi-officer • Bangla / English data</p></div><div id="headerUser" class="muted" style="color:white;text-align:right"></div></div></header>
 <main class="wrap">
@@ -243,7 +299,7 @@ body.dark-mode #tabs{background:#09182b;border-color:#203650}
 <section id="suspendedView" class="hidden"><div class="panel"><h2>Account Suspended</h2><p>আপনার অ্যাকাউন্ট বর্তমানে নিষ্ক্রিয়। Admin-এর সঙ্গে যোগাযোগ করুন।</p><button class="danger" id="suspendedLogout">Logout</button></div></section>
 <section id="appView" class="hidden">
 <div class="panel topline"><div><div class="actions no-print"><button type="button" class="secondary" id="homeBtn">⌂ Home</button></div><strong id="welcome"></strong><div class="muted" id="roleInfo"></div></div></div>
-<nav class="tabs no-print" id="tabs"><button type="button" class="active" data-tab="dashboard"><span class="navicon">⌂</span><span class="navlabel">Home</span></button><button type="button" data-tab="customers"><span class="navicon">▤</span><span class="navlabel">Survey</span></button><button type="button" data-tab="reports"><span class="navicon">▥</span><span class="navlabel">Reports</span></button><button type="button" data-tab="visits"><span class="navicon">▦</span><span class="navlabel">Customer Visit</span></button><button type="button" data-tab="dailyTasks"><span class="navicon">☑</span><span class="navlabel">Daily Tasks</span></button><button type="button" data-tab="profile"><span class="navicon">◉</span><span class="navlabel">Profile</span></button><button type="button" data-tab="admin" id="adminTab" class="hidden"><span class="navicon">⚙</span><span class="navlabel">Admin</span></button><button type="button" data-tab="calculator"><span class="navicon">🧮</span><span class="navlabel">Calculator</span></button><button type="button" data-tab="settings"><span class="navicon">☼</span><span class="navlabel">Settings</span></button></nav>
+<nav class="tabs no-print" id="tabs"><button type="button" class="active" data-tab="dashboard"><span class="navicon">⌂</span><span class="navlabel">Home</span></button><button type="button" data-tab="customers"><span class="navicon">▤</span><span class="navlabel">Survey</span></button><button type="button" data-tab="reports"><span class="navicon">▥</span><span class="navlabel">Reports</span></button><button type="button" data-tab="visits"><span class="navicon">▦</span><span class="navlabel">Visits</span></button><button type="button" data-tab="dailyTasks"><span class="navicon">☑</span><span class="navlabel">Tasks</span></button><button type="button" data-tab="profile"><span class="navicon">◉</span><span class="navlabel">Profile</span></button><button type="button" data-tab="admin" id="adminTab" class="hidden"><span class="navicon">⚙</span><span class="navlabel">Admin</span></button><button type="button" data-tab="calculator"><span class="navicon">🧮</span><span class="navlabel">Finance</span></button><button type="button" data-tab="settings"><span class="navicon">☼</span><span class="navlabel">Settings</span></button></nav>
 <section id="dashboard"><div class="panel"><h2>Customer Visit Reminders</h2><div class="muted">আজকের, বকেয়া ও আসন্ন ভিজিট</div><div id="dashboardVisitReminders"></div></div><div class="cards"><div class="card"><div class="metric clickable" id="mCustomers" title="সব সার্ভে রেকর্ড দেখুন">0</div><div class="label">Customer Surveys</div></div><div class="card"><div class="metric" id="mSurveys">0</div><div class="label">Legacy Survey Records</div></div><div class="card"><div class="metric clickable" id="mVisits" title="সব Visit রেকর্ড দেখুন">0</div><div class="label">Visit Records</div></div><div class="card"><div class="metric clickable" id="mHighVolume" title="৩০ লাখ টাকার বেশি ব্যবসায়িক ভলিউমের গ্রাহক দেখুন">0</div><div class="label">Business Volume Over ৳30 Lakh</div></div></div><div class="panel"><div class="lead-filter-head"><div><h2>Lead Status Overview</h2><div class="muted">প্রতিটি কার্ডে ক্লিক করে সেই স্ট্যাটাসের গ্রাহক তালিকা দেখুন</div></div><button type="button" class="secondary lead-clear-filter" id="clearLeadFilter">সব Lead দেখুন</button></div><div class="lead-status-grid" id="leadStatusCards"></div></div><div class="panel"><h2>Performance Overview</h2><div id="performance"></div></div><div class="panel"><h2>Recent Activity</h2><div id="recent"></div></div></section>
 <section id="customerRecords" class="hidden">
   <div class="panel">
@@ -881,39 +937,6 @@ $('surveySharePdfBtn').onclick=async()=>{let id=$('surveyViewModal').dataset.rec
  }
  function savingsCalc(kind){let dps=kind==='dps',P=val(dps?'dpsAmount':'fdPrincipal'),rate=val(dps?'dpsRate':'fdRate'),years=val(dps?'dpsYears':'fdYears'),months=dps?0:val('fdMonths'),totalMonths=years*12+months,tax=val(dps?'dpsTax':'fdTax'),freq=dps?val('dpsFrequency'):val('fdFrequency');if(!valid(P,rate,years,months,tax)||P<=0||totalMonths<=0||tax>100||freq<=0){alert('সঠিক Amount, Duration, Rate ও Tax দিন।');return}let n=dps?Math.round(years*freq):(totalMonths/12*freq),periodRate=rate/100/freq,gross,invested;if(dps){gross=periodRate===0?P*n:P*(Math.pow(1+periodRate,n)-1)/periodRate;invested=P*n}else{gross=P*Math.pow(1+periodRate,n);invested=P}let interest=Math.max(0,gross-invested),taxAmount=interest*tax/100,net=gross-taxAmount,frequency=dps?({12:'Monthly',4:'Quarterly',1:'Yearly'}[freq]||freq+' times/year'):({1:'Yearly',2:'Half-yearly',4:'Quarterly',12:'Monthly'}[freq]||freq+' times/year');let data={title:dps?'DPS Calculator':'Fixed Deposit Calculator',summary:[[dps?'Installment Amount':'Principal',money(P)],['Frequency',frequency],['Annual Rate',rate+'%'],['Duration',dps?years+' years':years+' years '+months+' months'],['Total Invested',money(invested)],['Gross Maturity',money(gross)],['Gross Interest',money(interest)],['Tax Rate',tax+'%'],['Tax Deduction',money(taxAmount)],['Final Net Maturity',money(net)]],headers:['Particular','Amount'],rows:[['Total Invested',money(invested)],['Gross Maturity',money(gross)],['Gross Interest',money(interest)],['Tax Rate',tax+'%'],['Tax Deduction',money(taxAmount)],['Net Maturity',money(net)]],chart:[['Invested',invested,''],['Interest',interest,'interest'],['Tax',taxAmount,'']]};calcData[kind]=data;$c(kind+'Result').innerHTML=metrics(data.summary)+ '<h3>Investment Breakdown</h3>'+chart(data.chart)+table(data.headers,data.rows);calcSummary[kind]=`Gross maturity ${money(gross)}; tax ${money(taxAmount)}; net maturity ${money(net)}.`}
  function exportData(kind,format){let d=calcData[kind];if(!d){({emi:emiCalc,dps:()=>savingsCalc('dps'),fd:()=>savingsCalc('fd')})[kind]();d=calcData[kind]}if(!d)return;if(format==='pdf'){let w=window.open('','_blank');if(!w){alert('Popup allow করে আবার চেষ্টা করুন।');return}w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${d.title}</title><style>body{font-family:Arial,sans-serif;padding:24px;color:#182433}h2{color:#123b63}table{border-collapse:collapse;width:100%;font-size:11px}td,th{border:1px solid #ccd5df;padding:7px;text-align:right}td:first-child,th:first-child{text-align:left}th{background:#edf4fb}.summary{margin:14px 0;line-height:1.8}
-/* Refined navigation and responsive pie chart */
-#calculator .calc-pie-layout{display:grid;grid-template-columns:minmax(145px,205px) minmax(0,1fr);align-items:center;gap:20px;padding:16px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#fff,#f6f9fd);margin:10px 0 18px;min-width:0}
-#calculator .calc-donut{width:min(100%,200px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;margin:auto;box-shadow:inset 0 0 0 1px #ffffff80}
-#calculator .calc-donut-hole{width:59%;height:59%;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;box-shadow:0 2px 12px #102a4412}
-#calculator .calc-donut-hole b{font-size:clamp(12px,2vw,18px);color:#17263c;overflow-wrap:anywhere}
-#calculator .calc-donut-hole span{font-size:11px;color:#718096}
-#calculator .calc-legend{display:grid;gap:9px;min-width:0}
-#calculator .calc-legend-item{display:grid;grid-template-columns:11px minmax(50px,1fr) auto auto;align-items:center;gap:7px;font-size:12px;min-width:0}
-#calculator .calc-swatch{width:11px;height:11px;border-radius:3px}
-#calculator .calc-legend-label{overflow-wrap:anywhere;color:#526174}
-#calculator .calc-legend-item b{font-size:12px;white-space:nowrap}
-#calculator .calc-legend-item small{color:#718096;min-width:40px;text-align:right}
-@media(min-width:650px){
- #tabs{width:232px!important;padding:22px 14px!important;gap:9px!important;background:linear-gradient(180deg,#0b203a,#12365d)!important;border-right:1px solid #254a70!important}
- #tabs button{min-height:50px!important;padding:11px 13px!important;border-radius:12px!important;border:1px solid #ffffff12!important;background:#ffffff08!important;color:#d8e5f5!important;gap:12px!important;transition:all .18s ease}
- #tabs button .navicon{width:26px!important;min-width:26px!important;font-size:20px!important;text-align:center}
- #tabs button .navlabel{font-size:13px!important;line-height:1.3!important;white-space:normal!important}
- #tabs button:hover{background:#ffffff16!important;transform:translateX(3px)!important}
- #tabs button.active{background:linear-gradient(110deg,#2563eb,#4b83f5)!important;color:#fff!important;border-color:#82aaff!important;box-shadow:0 7px 18px #0003!important}
- #appView{margin-left:232px!important}.head{margin-left:232px!important}
-}
-@media(max-width:649px){
- body{padding-bottom:154px!important}
- #tabs{height:auto!important;min-height:142px!important;max-height:154px!important;padding:7px 5px calc(7px + env(safe-area-inset-bottom))!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;grid-auto-rows:minmax(52px,1fr)!important;gap:5px 4px!important;overflow-x:hidden!important;overflow-y:auto!important;align-content:center!important;background:rgba(255,255,255,.98)!important;backdrop-filter:blur(14px);box-shadow:0 -5px 22px #102a4418!important}
- #tabs:before{display:none!important}
- #tabs button{width:100%!important;min-width:0!important;min-height:52px!important;height:auto!important;padding:5px 2px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;border:1px solid transparent!important;border-radius:10px!important;background:transparent!important;color:#69788c!important;white-space:normal!important;overflow:hidden!important}
- #tabs button .navicon{display:block!important;width:auto!important;min-width:0!important;font-size:17px!important;line-height:1.05!important;margin:0!important}
- #tabs button .navlabel{display:block!important;max-width:100%!important;font-size:9px!important;line-height:1.15!important;font-weight:650!important;text-align:center!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important}
- #tabs button.active{background:#eaf2ff!important;color:#225bc2!important;border-color:#dbe8ff!important;box-shadow:inset 0 0 0 1px #dbe8ff!important}
- #calculator .calc-pie-layout{grid-template-columns:1fr;gap:14px;padding:13px}
- #calculator .calc-donut{width:min(64vw,185px)}
-}
-@media(max-width:360px){#tabs button .navlabel{font-size:8px!important}}
 </style></head><body><h2>My Market CRM — ${d.title}</h2><div class="summary">${d.summary.map(x=>`<b>${x[0]}:</b> ${x[1]}`).join('<br>')}</div><table><thead><tr>${d.headers.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${d.rows.map(r=>'<tr>'+r.map(x=>`<td>${x}</td>`).join('')+'</tr>').join('')}</tbody></table><script>window.onload=()=>window.print()<\/script></body></html>`);w.document.close();return}
  if(!window.XLSX){let sc=document.createElement('script');sc.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';sc.onload=()=>exportData(kind,'excel');sc.onerror=()=>alert('Excel লাইব্রেরি লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করুন।');document.head.appendChild(sc);return}let wb=XLSX.utils.book_new(),summary=XLSX.utils.aoa_to_sheet([['My Market CRM — '+d.title],...d.summary]);XLSX.utils.book_append_sheet(wb,summary,'Summary');let detail=XLSX.utils.aoa_to_sheet([d.headers,...d.rows]);XLSX.utils.book_append_sheet(wb,detail,'Details');XLSX.writeFile(wb,'MyMarketCRM_'+kind.toUpperCase()+'_Calculator.xlsx')}
  async function shareData(kind){if(!calcData[kind]){({emi:emiCalc,dps:()=>savingsCalc('dps'),fd:()=>savingsCalc('fd')})[kind]();if(!calcData[kind])return}let d=calcData[kind],txt='My Market CRM — '+d.title+'\n'+d.summary.map(x=>x[0]+': '+x[1]).join('\n');try{if(navigator.share)await navigator.share({title:d.title,text:txt});else if(navigator.clipboard){await navigator.clipboard.writeText(txt);alert('হিসাবের সারাংশ কপি হয়েছে। এখন শেয়ার করতে পারবেন।')}else prompt('Copy this summary:',txt)}catch(e){if(e.name!=='AbortError')alert('Share করা যায়নি: '+e.message)}}
