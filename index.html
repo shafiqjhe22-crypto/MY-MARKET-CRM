@@ -235,6 +235,28 @@ body.dark-mode #tabs{background:#09182b;border-color:#203650}
 #taskReportTable{overflow:auto}
 @media(max-width:649px){#dailyTaskSubTabs{display:grid;grid-template-columns:1fr 1fr}#specialProductRows .product-row{grid-template-columns:1fr 95px auto}}
 .task-monitor-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.task-monitor-grid .lead-card{cursor:pointer;text-align:left}@media(max-width:649px){.task-monitor-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.task-monitor-grid .lead-card{padding:11px 8px;min-height:84px}.task-monitor-grid .lead-count{font-size:21px!important}.task-monitor-grid .lead-name{font-size:10px!important}}
+
+/* Final navigation and sidebar polish */
+@media(min-width:650px){
+ #tabs button:nth-child(1){background:#e8f2ff!important;color:#155b9a!important;border-color:#d5e7fb!important}
+ #tabs button:nth-child(2){background:#e8f8f1!important;color:#16734c!important;border-color:#d2efdf!important}
+ #tabs button:nth-child(3){background:#fff3e5!important;color:#a85a0a!important;border-color:#f8e3c9!important}
+ #tabs button:nth-child(4){background:#f1edff!important;color:#6546a8!important;border-color:#e2dafb!important}
+ #tabs button:nth-child(5){background:#ffeef4!important;color:#a33d68!important;border-color:#f8dce7!important}
+ #tabs button:nth-child(6){background:#e8f7fa!important;color:#176b7b!important;border-color:#d2edf1!important}
+ #tabs button:nth-child(7){background:#fff7e8!important;color:#94620d!important;border-color:#f2e6c9!important}
+ #tabs button:nth-child(8){background:#f0f1ff!important;color:#4d50a8!important;border-color:#dedfff!important}
+ #tabs button:nth-child(9){background:#f1f5f9!important;color:#475569!important;border-color:#dfe6ee!important}
+ #tabs button.active{background:linear-gradient(120deg,#123b63,#1769aa)!important;color:#fff!important;border-color:#1769aa!important}
+}
+@media(max-width:649px){
+ body{padding-bottom:142px!important}
+ #tabs{grid-template-columns:repeat(5,minmax(0,1fr))!important;grid-auto-rows:minmax(48px,auto)!important;grid-auto-flow:row!important;gap:5px 4px!important;height:auto!important;min-height:116px!important;max-height:none!important;overflow:visible!important;padding:7px 6px calc(7px + env(safe-area-inset-bottom))!important;align-content:center!important}
+ #tabs button{width:100%;min-width:0!important;min-height:47px!important;height:auto!important;padding:5px 2px!important;gap:3px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;white-space:normal!important;overflow:hidden}
+ #tabs button .navicon{font-size:16px!important;line-height:1.05!important;margin:0!important}
+ #tabs button .navlabel{display:block;width:100%;font-size:9px!important;line-height:1.12!important;text-align:center!important;white-space:normal!important;overflow-wrap:anywhere;word-break:normal}
+ #tabs button.active{background:#eaf2ff!important;color:#225bc2!important;border:1px solid #dbe8ff!important}
+}
 </style></head><body>
 <header><div class="head"><button type="button" class="secondary hidden" id="backBtn" aria-label="Go back" title="Back">←</button><div class="brand-block"><h1>SME Daily Tasks</h1><p>Cloud-based • Multi-officer • Bangla / English data</p></div><div id="headerUser" class="muted" style="color:white;text-align:right"></div></div></header>
 <main class="wrap">
@@ -413,6 +435,18 @@ body.dark-mode #tabs{background:#09182b;border-color:#203650}
 <section id="calculator" class="hidden">
 <style>
 #calculator .calc-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}#calculator .calc-tabs button{border:0;border-radius:9px;padding:10px 14px;background:#e7eef7;color:#123b63;font-weight:750}#calculator .calc-tabs button.active{background:#123b63;color:#fff}#calculator .calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}#calculator .calc-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px;margin:12px 0}#calculator .calc-metric{background:linear-gradient(135deg,#eff6ff,#f8fbff);border:1px solid #dce9f7;border-radius:12px;padding:12px}#calculator .calc-metric b{display:block;font-size:19px;color:#145b91;overflow-wrap:anywhere}#calculator .calc-metric span{font-size:11px;color:#64748b}#calculator .calc-chart{display:flex;align-items:end;gap:10px;height:165px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fbfdff}#calculator .calc-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:end;height:100%;gap:5px;font-size:11px;color:#526174}#calculator .calc-bar{width:min(55px,80%);border-radius:7px 7px 0 0;background:linear-gradient(180deg,#48a4e8,#1769aa);min-height:2px}#calculator .calc-bar.interest{background:linear-gradient(180deg,#f6bd60,#d97706)}#calculator .calc-table-wrap{overflow:auto;max-height:440px;border:1px solid var(--line);border-radius:10px}#calculator table{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}#calculator th,#calculator td{padding:8px;border-bottom:1px solid #e6edf4;text-align:right}#calculator th{background:#edf4fb;color:#123b63;position:sticky;top:0}#calculator th:first-child,#calculator td:first-child{text-align:left}#calculator .calc-hint{font-size:11px;color:#64748b;line-height:1.5}#calculator .calc-result{margin-top:12px}#calculator .calc-actions{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+#calculator .calc-pie-layout{display:grid;grid-template-columns:minmax(180px,260px) minmax(0,1fr);align-items:center;gap:22px;padding:16px;border:1px solid #e5edf6;border-radius:16px;background:linear-gradient(145deg,#fff,#f7faff);box-shadow:0 5px 18px rgba(24,54,91,.06);max-width:760px;margin:12px 0 18px}
+#calculator .calc-donut{width:100%;max-width:240px;aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;box-shadow:inset 0 0 0 1px #ffffff80,0 5px 18px rgba(20,45,80,.12);margin:auto}
+#calculator .calc-donut-hole{width:58%;height:58%;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 2px 12px #102a4414;padding:8px}
+#calculator .calc-donut-hole b{font-size:clamp(14px,2vw,21px);color:#233b59;overflow-wrap:anywhere;line-height:1.2}
+#calculator .calc-donut-hole span{font-size:11px;color:#8190a3;margin-top:4px}
+#calculator .calc-legend{display:grid;gap:9px;min-width:0}
+#calculator .calc-legend-item{display:grid;grid-template-columns:12px minmax(70px,1fr) auto auto;align-items:center;gap:9px;padding:10px 11px;background:#fff;border:1px solid #e8eef5;border-radius:10px;min-width:0}
+#calculator .calc-swatch{width:11px;height:11px;border-radius:4px;display:block}
+#calculator .calc-legend-label{font-size:12px;color:#596b80;min-width:0;overflow-wrap:anywhere}
+#calculator .calc-legend-item b{font-size:12px;color:#233b59;white-space:nowrap}
+#calculator .calc-legend-item small{font-size:10px;color:#8290a2;white-space:nowrap}
+@media(max-width:600px){#calculator .calc-pie-layout{grid-template-columns:minmax(0,1fr);gap:14px;padding:12px}#calculator .calc-donut{max-width:205px}#calculator .calc-legend-item{grid-template-columns:11px minmax(0,1fr) auto auto;gap:7px;padding:9px}#calculator .calc-legend-item b{font-size:11px}}
 </style>
 <div class="panel"><div class="topline"><div><h2>🧮 My Market CRM — Financial Calculator</h2><div class="muted">EMI • DPS • Fixed Deposit | Export PDF / Excel / Share</div></div><span class="badge">BDT ৳</span></div><div class="calc-tabs"><button class="active" data-calctab="emi">EMI Calculator</button><button data-calctab="dps">DPS Calculator</button><button data-calctab="fd">FD Calculator</button></div></div>
 <div id="calc-emi" class="calc-pane"><div class="panel"><h2>EMI Calculator — Reducing Balance & Flat Rate</h2><div class="calc-grid"><div><label>Loan Amount (৳)</label><input id="emiPrincipal" type="number" min="1" ></div><div><label>Annual Interest Rate (%)</label><input id="emiRate" type="number" min="0" step="0.01" ></div><div><label>Loan Tenure (Months)</label><input id="emiMonths" type="number" min="1" max="600" ></div><div><label>Schedule Method</label><select id="emiScheduleMethod"><option value="both" selected>Both Methods (Compare)</option><option value="reducing">Reducing Balance</option><option value="flat">Flat Rate</option></select></div></div><div class="calc-actions"><button class="primary" id="emiCalculate">Calculate EMI</button><button class="secondary" data-export="emi" data-format="pdf">PDF Export</button><button class="secondary" data-export="emi" data-format="excel">Excel Export</button><button class="secondary" data-share="emi">Share</button></div><div id="emiResult" class="calc-result"></div></div></div>
@@ -881,13 +915,20 @@ $('surveySharePdfBtn').onclick=async()=>{let id=$('surveyViewModal').dataset.rec
   const gradient=total?`conic-gradient(${slices.join(',')})`:'conic-gradient(#dbe3ed 0% 100%)';
   return `<div class="calc-pie-layout"><div class="calc-donut" style="background:${gradient}"><div class="calc-donut-hole"><b>${money(total)}</b><span>Total</span></div></div><div class="calc-legend">${parts.map(([label,amount],i)=>`<div class="calc-legend-item"><span class="calc-swatch" style="background:${colors[i%colors.length]}"></span><span class="calc-legend-label">${label}</span><b>${money(amount)}</b><small>${total?(Math.max(0,Number(amount)||0)/total*100).toFixed(1):'0.0'}%</small></div>`).join('')}</div></div>`;
  }
+ function monthInWords(n){
+  const ones=['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+  const tens=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+  if(n<20)return ones[n];if(n<100)return tens[Math.floor(n/10)]+(n%10?'-'+ones[n%10]:'');
+  if(n<1000)return ones[Math.floor(n/100)]+' Hundred'+(n%100?' '+monthInWords(n%100):'');
+  return String(n);
+ }
  function emiCalc(){
   let P=val('emiPrincipal'),annual=val('emiRate'),n=Math.floor(val('emiMonths'));
   if(!valid(P,annual,n)||P<=0||n<1||n>600){alert('সঠিক Loan Amount, Rate ও Months দিন (সর্বোচ্চ 600 মাস)।');return}
   let r=annual/1200,flatInterest=P*annual/100*n/12,flatEMI=(P+flatInterest)/n,redEMI=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
   let method=$c('emiScheduleMethod').value,methods=method==='both'?['reducing','flat']:[method];
   let headers=['Method','Month','Opening Balance','EMI','Principal','Interest','Closing Balance'],allRows=[],totalInterest={reducing:0,flat:0};
-  methods.forEach(m=>{let bal=P,rows=[];for(let month=1;month<=n;month++){let interest=m==='flat'?flatInterest/n:bal*r,principal=m==='flat'?P/n:Math.min(bal,redEMI-interest),pay=principal+interest;if(month===n){principal=bal;pay=principal+interest}let close=Math.max(0,bal-principal);totalInterest[m]+=interest;rows.push([m,money(bal),money(pay),money(principal),money(interest),money(close)]);allRows.push([m==='flat'?'Flat Rate':'Reducing Balance',...rows[rows.length-1]]);bal=close;}});
+  methods.forEach(m=>{let bal=P,rows=[];for(let month=1;month<=n;month++){let interest=m==='flat'?flatInterest/n:bal*r,principal=m==='flat'?P/n:Math.min(bal,redEMI-interest),pay=principal+interest;if(month===n){principal=bal;pay=principal+interest}let close=Math.max(0,bal-principal);totalInterest[m]+=interest;const monthSerial=monthInWords(month);rows.push([monthSerial,money(bal),money(pay),money(principal),money(interest),money(close)]);allRows.push([m==='flat'?'Flat Rate':'Reducing Balance',...rows[rows.length-1]]);bal=close;}});
   let chosen=method==='flat'?flatEMI:redEMI,selectedInterest=method==='both'?null:totalInterest[method],selectedTotal=method==='both'?null:P+selectedInterest;
   let summary=[['Loan Amount',money(P)],['Annual Rate',annual+'%'],['Tenure',n+' months']];
   if(method==='both'){summary.push(['Reducing Balance EMI',money(redEMI)],['Reducing Balance Total Interest',money(totalInterest.reducing)],['Reducing Balance Total Repayment',money(P+totalInterest.reducing)],['Flat Rate EMI',money(flatEMI)],['Flat Rate Total Interest',money(totalInterest.flat)],['Flat Rate Total Repayment',money(P+totalInterest.flat)]);}else{summary.push(['Selected Method',method==='flat'?'Flat Rate':'Reducing Balance'],['Monthly EMI',money(chosen)],['Total Interest',money(selectedInterest)],['Total Repayment',money(selectedTotal)]);}
