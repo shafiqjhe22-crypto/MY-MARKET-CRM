@@ -559,7 +559,8 @@ let app,auth,db,currentUser=null,profile=null,isAdmin=false,records={customers:[
 const $=id=>document.getElementById(id), today=()=>new Date().toISOString().slice(0,10), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function msg(s){$('authMsg').textContent=s}function show(id){['authView','pendingView','suspendedView','appView'].forEach(x=>$(x).classList.toggle('hidden',x!==id));$('backBtn').classList.toggle('hidden',id!=='appView');document.body.classList.toggle('auth-mode',id==='authView')}function money(n){return '৳'+Number(n||0).toLocaleString('en-US')}
 if(configured){app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app)}else{msg('প্রথমে index.html-এর firebaseConfig অংশে আপনার Firebase Web App config বসান।')}
-$('showRegister').onclick=()=>setAuthMode('register');
+$('loginModeBtn').onclick=()=>setAuthMode('login');
+$('registerModeBtn').onclick=()=>{setAuthMode('register');...};
 function setAuthMode(mode){const registering=mode==='register';$('loginPanel').classList.toggle('hidden',registering);$('registerPanel').classList.toggle('hidden',!registering);$('loginModeBtn').classList.toggle('active',!registering);$('registerModeBtn').classList.toggle('active',registering);$('authHeading').textContent=registering?'Create your account':'Sign in to your account';$('authSubheading').textContent=registering?'Employee details দিয়ে Officer Registration সম্পন্ন করুন।':'আপনার Email ও Password দিয়ে লগইন করুন।'}
 $('loginModeBtn').onclick=()=>setAuthMode('login');$('registerModeBtn').onclick=()=>{setAuthMode('register');if($('registerMsg'))$('registerMsg').textContent='Employee ID যাচাই করে Registration সম্পন্ন করুন।'};
 // Officer master data imported from the supplied Employee Database.xlsx.
