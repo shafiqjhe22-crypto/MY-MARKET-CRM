@@ -7,7 +7,6 @@
 <meta name="description" content="SME Daily Tasks — cloud-based multi-officer daily operations dashboard">
 <link rel="manifest" href="manifest.json">
 <title>SME Daily Tasks — Professional Dashboard</title>
-
 <style>
 :root{
   --navy:#0c2d57;
@@ -123,8 +122,6 @@ h1,h2,h3,p{margin:0}
   margin-left:9px;width:30px;height:30px;border-radius:50%;
   background:#e7f7ed;color:#16803d;text-decoration:none;font-size:17px;vertical-align:middle
 }
-
-/* Header */
 header{
   position:fixed;
   top:0;left:0;right:0;
@@ -175,8 +172,6 @@ header p{
   font-weight:700;
   text-align:right;
 }
-
-/* Sidebar */
 #tabs{
   position:fixed!important;
   left:0;top:0;bottom:0;
@@ -293,13 +288,9 @@ header p{
   padding:0 6px 30px;
 }
 main.wrap{padding:18px 20px 40px}
-
-/* Top panel */
 #appView>.panel.topline{
   display:none;
 }
-
-/* Welcome banner */
 .dashboard-hero{
   position:relative;
   overflow:hidden;
@@ -352,8 +343,6 @@ main.wrap{padding:18px 20px 40px}
   font-weight:800;
   text-shadow:0 2px 8px rgba(0,0,0,.16);
 }
-
-/* Dashboard layout */
 #dashboard{
   display:flex;
   flex-direction:column;
@@ -419,8 +408,6 @@ main.wrap{padding:18px 20px 40px}
   background:#19bf7f;
   box-shadow:0 0 0 4px rgba(25,191,127,.18)
 }
-
-/* KPI cards */
 .task-monitor-grid{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr))!important;
@@ -460,7 +447,7 @@ main.wrap{padding:18px 20px 40px}
   width:38px!important;height:38px!important;
   border-radius:12px!important;
   display:grid!important;place-items:center!important;
-  background:rgba(255,255,255,.16)!important;
+  background:rgba(255,255,white,.16)!important;
   font-size:21px!important;
 }
 .task-kpi-label{
@@ -476,7 +463,7 @@ main.wrap{padding:18px 20px 40px}
 }
 .task-kpi-foot{
   font-size:12px!important;
-  color:rgba(255,255,255,.88)!important;
+  color:rgba(255,255,white,.88)!important;
 }
 .task-kpi-arrow{
   position:absolute;
@@ -484,8 +471,6 @@ main.wrap{padding:18px 20px 40px}
   font-size:17px!important;
   opacity:.6;
 }
-
-/* Visit + market overview row */
 .dashboard-top-grid{
   display:grid;
   grid-template-columns:1.12fr 1.38fr;
@@ -538,8 +523,6 @@ main.wrap{padding:18px 20px 40px}
   font-size:12px;
   color:#5f6f84;
 }
-
-/* Market Overview */
 .dashboard-metric-grid{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
@@ -560,7 +543,7 @@ main.wrap{padding:18px 20px 40px}
   position:absolute;
   right:-22px;bottom:-28px;
   width:96px;height:96px;border-radius:50%;
-  background:rgba(255,255,255,.12);
+  background:rgba(255,255,white,.12);
 }
 .metric-card .metric{
   font-size:37px!important;
@@ -569,14 +552,14 @@ main.wrap{padding:18px 20px 40px}
 }
 .metric-card .label{
   font-size:12px;
-  color:rgba(255,255,255,.92);
+  color:rgba(255,255,white,.92);
   font-weight:700;
 }
 .metric-symbol{
   width:34px;height:34px;
   display:grid;place-items:center;
   border-radius:10px;
-  background:rgba(255,255,255,.18);
+  background:rgba(255,255,white,.18);
   color:#fff;
   font-size:18px;
   margin-bottom:10px;
@@ -585,8 +568,6 @@ main.wrap{padding:18px 20px 40px}
 .metric-purple{background:linear-gradient(135deg,#a149ff,#802df1)!important}
 .metric-green{background:linear-gradient(135deg,#22d87e,#0ba95d)!important}
 .metric-orange{background:linear-gradient(135deg,#ffb627,#f18b11)!important}
-
-/* Lead cards */
 .lead-status-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -617,16 +598,12 @@ main.wrap{padding:18px 20px 40px}
 .lead-card.notinterested{background:linear-gradient(135deg,#ef4b4b,#d92f2f)}
 .lead-card.selected{outline:3px solid #11366a;outline-offset:2px}
 .lead-clear-filter{font-size:12px}
-
-/* lower grid */
 .dashboard-lower-grid{
   display:grid;
   grid-template-columns:1.1fr .9fr;
   gap:16px;
   align-items:start;
 }
-
-/* performance widget */
 .performance-shell{
   display:grid;
   grid-template-columns:220px 1fr;
@@ -686,8 +663,6 @@ main.wrap{padding:18px 20px 40px}
   font-size:12px;
   color:#63748a;
 }
-
-/* Recent activity */
 .activity-list{
   display:grid;
   gap:14px;
@@ -716,8 +691,6 @@ main.wrap{padding:18px 20px 40px}
   font-size:12px;
   color:#66788f;
 }
-
-/* auth */
 .auth-premium{max-width:none;margin:0;min-height:100vh;padding:clamp(12px,3vw,38px);display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 12% 15%,#173d76 0,transparent 38%),radial-gradient(ellipse at 90% 90%,#36156c 0,transparent 34%),linear-gradient(135deg,#061225,#0a1d3b 55%,#10113a)}
 .auth-shell{width:min(1280px,100%);min-height:clamp(620px,calc(100vh - 64px),820px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid #6ccaff35;border-radius:28px;overflow:hidden;background:#0b1b35;box-shadow:0 28px 90px #020817aa,0 0 45px #1b9dff20}
 .auth-showcase{position:relative;overflow:hidden;padding:clamp(34px,4vw,58px);color:#fff;background:linear-gradient(145deg,#0b2346,#08162e 65%,#15104b)}
@@ -775,8 +748,6 @@ main.wrap{padding:18px 20px 40px}
 body.auth-mode{background:#071329;min-height:100vh}
 body.auth-mode>header{display:none}
 body.auth-mode>main.wrap{max-width:none;margin:0;padding:0;min-height:100vh}
-
-/* modal */
 #surveyViewModal,#visitViewModal,#dailyTaskViewModal{
   position:fixed;inset:0;background:rgba(8,24,46,.68);
   backdrop-filter:blur(5px);z-index:120;overflow:auto;padding:18px
@@ -786,8 +757,6 @@ body.auth-mode>main.wrap{max-width:none;margin:0;padding:0;min-height:100vh}
   box-shadow:0 22px 70px rgba(0,0,0,.22)
 }
 #dailyTaskViewModal .visit-modalbox{max-width:850px}
-
-/* footer */
 .app-footer{
   margin-top:18px;
   border:1px solid #dbe6f5;
@@ -804,8 +773,6 @@ body.auth-mode>main.wrap{max-width:none;margin:0;padding:0;min-height:100vh}
 }
 .footer-left b{color:#123b63}
 .footer-right{font-size:12px;color:#4f6887}
-
-/* Existing modules */
 #dailyTaskSubTabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
 #dailyTaskSubTabs button{border:1px solid var(--line);border-radius:10px;padding:10px 13px;background:#f1f5fb;color:var(--navy);font-weight:750;font-size:12px}
 #dailyTaskSubTabs button.active{background:var(--navy);color:#fff}
@@ -814,15 +781,12 @@ body.auth-mode>main.wrap{max-width:none;margin:0;padding:0;min-height:100vh}
 #specialProductRows .product-row label{margin-top:4px}
 #specialProductRows .product-row .product-custom{margin-top:5px}
 #taskReportTable{overflow:auto}
-
 #profile .profilegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .profileitem{padding:14px;border:1px solid var(--line);border-radius:12px;background:#f9fbfe}
 table{border-collapse:separate!important;border-spacing:0;width:100%;font-size:12px!important}
 thead th{position:sticky;top:0;background:#f4f7fc!important;color:#52647d!important;font-size:10px!important;text-transform:uppercase;letter-spacing:.55px;font-weight:800!important;border-bottom:1px solid #e1e8f1!important;padding:12px 11px!important;white-space:nowrap}
 tbody td{padding:11px!important;border-bottom:1px solid #edf1f6!important;color:#34445a;vertical-align:middle}
 tbody tr:hover td{background:#f8fbff}
-
-/* responsive */
 @media(max-width:1150px){
   .dashboard-top-grid{grid-template-columns:1fr}
   .dashboard-lower-grid{grid-template-columns:1fr}
@@ -848,7 +812,7 @@ tbody tr:hover td{background:#f8fbff}
     top:auto!important;left:0;right:0;bottom:0;width:100%!important;height:auto;
     min-height:116px;padding:7px 6px calc(7px + env(safe-area-inset-bottom))!important;
     display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px 4px!important;
-    overflow:visible!important;background:rgba(255,255,255,.98)!important;
+    overflow:visible!important;background:rgba(255,255,white,.98)!important;
     border-top:1px solid #dfe7f1;border-right:0;box-shadow:0 -7px 22px rgba(20,43,76,.08)
   }
   .sidebar-brand,.sidebar-promo,.sidebar-bank{display:none}
@@ -889,8 +853,6 @@ tbody tr:hover td{background:#f8fbff}
   #appView{margin:0!important}
   .panel,.card{box-shadow:none;break-inside:avoid}
 }
-
-/* dark mode */
 body.dark-mode{
   --bg:#0c1728;--surface:#142238;--text:#e5edf8;--muted:#9aabc2;--line:#293c56;
   background:var(--bg);color:var(--text)
@@ -912,7 +874,6 @@ body.dark-mode .dashboard-hero{border-color:#2b4260}
 body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded}
 </style>
 </head>
-
 <body>
 <header>
   <div class="head">
@@ -923,9 +884,7 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
     <div id="headerUser" class="muted" style="color:white;text-align:right"></div>
   </div>
 </header>
-
 <main class="wrap">
-
 <section id="authView" class="auth auth-premium">
   <div class="auth-shell">
     <div class="auth-showcase">
@@ -957,7 +916,6 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
           <button type="button" class="auth-switch-btn active" id="loginModeBtn">Sign In</button>
           <button type="button" class="auth-switch-btn" id="registerModeBtn">Register</button>
         </div>
-
         <div class="auth-login-panel" id="loginPanel">
           <label for="loginEmail">Email Address</label>
           <div class="auth-input-wrap"><span>✉</span><input id="loginEmail" type="email" autocomplete="username" placeholder="Enter your email" required></div>
@@ -968,7 +926,6 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
           <div id="authMsg" class="status">অফিসার লগইন অথবা নতুন রেজিস্ট্রেশন করুন।</div>
           <div class="auth-bottom-note">Authorized personnel only • SME Daily Tasks</div>
         </div>
-
         <div class="auth-register-panel hidden" id="registerPanel">
           <div class="notice">রেজিস্ট্রেশনের পর Admin অনুমোদন না দেওয়া পর্যন্ত CRM ডেটা ব্যবহার করা যাবে না।</div>
           <form id="registerForm">
@@ -995,7 +952,6 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
     </div>
   </div>
 </section>
-
 <section id="pendingView" class="hidden">
   <div class="panel">
     <h2>Approval Pending</h2>
@@ -1006,7 +962,6 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
     </div>
   </div>
 </section>
-
 <section id="suspendedView" class="hidden">
   <div class="panel">
     <h2>Account Suspended</h2>
@@ -1014,9 +969,7 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
     <button class="danger" id="suspendedLogout">Logout</button>
   </div>
 </section>
-
 <section id="appView" class="hidden">
-
   <div class="panel topline">
     <div>
       <div class="actions no-print"><button type="button" class="secondary" id="homeBtn">⌂ Home</button></div>
@@ -1024,14 +977,12 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
       <div class="muted" id="roleInfo"></div>
     </div>
   </div>
-
   <nav class="tabs no-print" id="tabs">
     <div class="sidebar-brand">
       <div class="sidebar-logo">SME</div>
       <div class="sidebar-title">SME Daily Tasks</div>
       <div class="sidebar-subtitle">Track • Manage • Grow</div>
     </div>
-
     <div class="tabs-menu">
       <button type="button" class="active" data-tab="dashboard"><span class="navicon">⌂</span><span class="navlabel">Dashboard</span></button>
       <button type="button" data-tab="customers"><span class="navicon">▤</span><span class="navlabel">Survey</span></button>
@@ -1043,16 +994,13 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
       <button type="button" data-tab="calculator"><span class="navicon">🧮</span><span class="navlabel">Finance</span></button>
       <button type="button" data-tab="settings"><span class="navicon">☼</span><span class="navlabel">Settings</span></button>
     </div>
-
     <div class="sidebar-promo">
       <div class="promo-big">Achieve More<br>Together</div>
       <div class="promo-small">Powered by your performance</div>
     </div>
     <div class="sidebar-bank">◢ BRAC Bank</div>
   </nav>
-
   <section id="dashboard">
-
     <section class="dashboard-hero">
       <div class="hero-title" id="heroWelcome">Welcome Back!</div>
       <div class="hero-sub">Let's achieve our daily targets together</div>
@@ -1063,7 +1011,6 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
       </div>
       <div class="hero-quote">“Plan Well,<br>Perform Better”</div>
     </section>
-
     <section class="dash-section dash-section-monitor" id="taskMonitorPanel" aria-labelledby="taskMonitorHeading">
       <div class="dash-section-heading">
         <div>
@@ -1104,7 +1051,6 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
       </div>
       <div id="taskMonitorDetails" class="hidden"></div>
     </section>
-
     <div class="dashboard-top-grid">
       <section class="dash-section dash-section-visits">
         <div class="dash-section-heading">
@@ -1117,7 +1063,6 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
         </div>
         <div id="dashboardVisitReminders"></div>
       </section>
-
       <section class="dash-section dash-section-overview">
         <div class="dash-section-heading">
           <div>
@@ -1151,20 +1096,18 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
         </div>
       </section>
     </div>
-
     <div class="dashboard-top-grid">
       <section class="dash-section dash-section-leads">
         <div class="dash-section-heading">
           <div>
             <span class="dash-kicker">SALES PIPELINE</span>
             <h2>Lead Status Overview</h2>
-            <p>প্রতিটি স্ট্যাটাসে ক্লিক করে সংশ্লিষ্ট গ্রাহকের তালিকা দেখুন</p>
+            <p>প্রতিটি স্ট্যাটাসে ক্লিক করে সংশ্লিষ্ট গ্রাহকের তালিস্তা দেখুন</p>
           </div>
           <button type="button" class="secondary lead-clear-filter" id="clearLeadFilter">সব Lead দেখুন</button>
         </div>
         <div class="lead-status-grid" id="leadStatusCards"></div>
       </section>
-
       <section class="dash-section dash-section-performance">
         <div class="dash-section-heading">
           <div>
@@ -1177,14 +1120,13 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
         <div id="performance"></div>
       </section>
     </div>
-
     <section class="dashboard-lower-grid">
       <section class="dash-section dash-section-recent">
         <div class="dash-section-heading">
           <div>
             <span class="dash-kicker">LATEST UPDATES</span>
             <h2>Recent Activity</h2>
-            <p>সাম্প্রতিক কার্যক্রমের তালিকা</p>
+            <p>সাম্প্রতিক কার্যক্রমের তালিস্তা</p>
           </div>
           <span class="dash-section-icon">◷</span>
         </div>
@@ -1207,9 +1149,6 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
       </section>
     </section>
   </section>
-
-  <!-- Rest of the original app sections remain exactly the same -->
-
   <section id="customerRecords" class="hidden">
     <div class="panel">
       <div class="topline" style="flex-wrap:wrap">
@@ -1217,4 +1156,143 @@ body.dark-mode .app-footer{background:#142238;border-color:#293c56;color:#d3dded
           <h2>Customer Survey Records</h2>
           <div class="muted" id="customerRecordsSummary">আপনার এন্ট্রি করা Customer Survey রেকর্ডসমূহ</div>
         </div>
-        <button type="button" class="primary" id="addCustomer
+        <button type="button" class="primary" id="addCustomerBtn">+ নতুন সার্ভে</button>
+      </div>
+      <div id="customerList"></div>
+    </div>
+  </section>
+  <section id="reports" class="hidden">
+    <div class="panel">
+      <h2>Reports</h2>
+      <div id="reportContent"></div>
+    </div>
+  </section>
+  <section id="visits" class="hidden">
+    <div class="panel">
+      <h2>Visit Records</h2>
+      <div id="visitList"></div>
+    </div>
+  </section>
+  <section id="dailyTasks" class="hidden">
+    <div class="panel">
+      <h2>Daily Tasks</h2>
+      <div id="dailyTaskContent"></div>
+    </div>
+  </section>
+  <section id="profile" class="hidden">
+    <div class="panel">
+      <h2>Profile</h2>
+      <div id="profileContent"></div>
+    </div>
+  </section>
+  <section id="admin" class="hidden">
+    <div class="panel">
+      <h2>Admin Panel</h2>
+      <div id="adminContent"></div>
+    </div>
+  </section>
+  <section id="calculator" class="hidden">
+    <div class="panel">
+      <h2>Finance Calculator</h2>
+      <div id="calculatorContent"></div>
+    </div>
+  </section>
+  <section id="settings" class="hidden">
+    <div class="panel">
+      <h2>Settings</h2>
+      <div id="settingsContent"></div>
+    </div>
+  </section>
+</section>
+</main>
+<script>
+(function(){
+  function $(id){return document.getElementById(id);}
+  const loginPanel = $('loginPanel');
+  const registerPanel = $('registerPanel');
+  const loginModeBtn = $('loginModeBtn');
+  const registerModeBtn = $('registerModeBtn');
+  const loginBtn = $('loginBtn');
+  const forgotBtn = $('forgotBtn');
+  const loginEmail = $('loginEmail');
+  const loginPassword = $('loginPassword');
+  const rememberLogin = $('rememberLogin');
+  const authMsg = $('authMsg');
+  const registerForm = $('registerForm');
+  const authView = $('authView');
+  const appView = $('appView');
+  const toggleLoginPassword = $('toggleLoginPassword');
+  const registerMsg = $('registerMsg');
+
+  function showLogin(){
+    loginPanel.classList.remove('hidden');
+    registerPanel.classList.add('hidden');
+    loginModeBtn.classList.add('active');
+    registerModeBtn.classList.remove('active');
+  }
+  function showRegister(){
+    loginPanel.classList.add('hidden');
+    registerPanel.classList.remove('hidden');
+    loginModeBtn.classList.remove('active');
+    registerModeBtn.classList.add('active');
+  }
+
+  if(loginModeBtn) loginModeBtn.addEventListener('click', showLogin);
+  if(registerModeBtn) registerModeBtn.addEventListener('click', showRegister);
+
+  if(loginBtn){
+    loginBtn.addEventListener('click', function(){
+      const email = loginEmail.value.trim();
+      const pass = loginPassword.value;
+      if(!email || !pass){
+        authMsg.textContent = 'Please enter email and password';
+        return;
+      }
+      authMsg.textContent = 'Signing in...';
+      setTimeout(function(){
+        localStorage.setItem('token', 'demo-token');
+        localStorage.setItem('user', email);
+        authView.classList.add('hidden');
+        appView.classList.remove('hidden');
+        $('headerUser').textContent = email;
+      }, 600);
+    });
+  }
+
+  if(registerForm){
+    registerForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const pass = $('rPass').value;
+      const pass2 = $('rPass2').value;
+      if(pass !== pass2){
+        registerMsg.textContent = 'Passwords do not match';
+        return;
+      }
+      registerMsg.textContent = 'Registration successful! Please login.';
+      setTimeout(function(){
+        showLogin();
+        registerMsg.textContent = 'Employee ID যাচাই করে Registration সম্পন্ন করুন।';
+      }, 1200);
+    });
+  }
+
+  if(toggleLoginPassword){
+    toggleLoginPassword.addEventListener('click', function(){
+      const t = loginPassword.getAttribute('type');
+      loginPassword.setAttribute('type', t === 'password' ? 'text' : 'password');
+    });
+  }
+
+  if(forgotBtn){
+    forgotBtn.addEventListener('click', function(){
+      alert('Forgot password flow will be implemented with backend.');
+    });
+  }
+
+  // Demo: show login by default
+  if(loginPanel) loginPanel.classList.remove('hidden');
+  if(registerPanel) registerPanel.classList.add('hidden');
+})();
+</script>
+</body>
+</html>
